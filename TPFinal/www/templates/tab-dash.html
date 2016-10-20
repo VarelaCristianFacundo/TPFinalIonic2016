@@ -1,10 +1,48 @@
-<ion-view view-title="Desafio">
+<ion-view view-title="Desafio Prode">
   <ion-content class="padding">
   <label>
-     <span class="input-label">Desafio:</span>
-     <input type="text" placeholder= "Ingrese el desafio">
+     <h2>Ingrese los equipos a competir</h2>
   </label>
-   
+<div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Equipo A 
+    </div>
+    <select>
+      <option>Boca</option>
+      <option selected>River</option>
+      <option>San Lorenzo</option>
+    </select>
+  </label>
+
+<label class="item item-input item-select">
+    <div class="input-label">
+      Equipo B
+    </div>
+    <select>
+      <option>Boca</option>
+      <option selected>River</option>
+      <option>San Lorenzo</option>
+    </select>
+  </label>
+
+</div>
+
+<label>
+     <h3>Seleccione el tipo de desafío</h3>
+  </label>
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Tipo de desafío
+    </div>
+    <select>
+      <option>Gana Equipo A</option>
+      <option selected>Gana Equipo B</option>
+      <option>Empate</option>
+    </select>
+  </label>
+
    <label>
      <span class="input-label">Ingrese el monto:</span>
    </label>
@@ -13,6 +51,18 @@
     <input type="range" name="credito" min="0" max="1000" value="0">
     <i class="icon ion-cash"></i>
   </ion-item>
+
+ <label>
+     <span class="input-label">Activar Apuesta</span>
+   </label>
+
+<label class="toggle">
+   <input type="checkbox">
+   <div class="track">
+     <div class="handle"></div>
+   </div>
+</label>
+
 
   </ion-content>
 </ion-view>
