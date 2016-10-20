@@ -1,7 +1,7 @@
 <ion-view view-title="Desafio Prode">
   <ion-content class="padding">
   <label>
-     <h2>Ingrese los equipos a competir</h2>
+     <h3>Ingrese los equipos a competir</h3>
   </label>
 <div class="list">
 
@@ -46,11 +46,21 @@
    <label>
      <span class="input-label">Ingrese el monto:</span>
    </label>
-<ion-item class="range range-positive">
-    <i class="icon ion-cash"></i>
+<ion-item class="range range-balanced">
+    <i class="icon ion-cash balanced"></i>
     <input type="range" name="credito" min="0" max="1000" value="0">
-    <i class="icon ion-cash"></i>
+    <i class="icon ion-cash balanced"></i>
   </ion-item>
+
+<label class="item item-input">
+                <span class="input-label">Inicio del desafío</span>
+                <input type="date">
+            </label>
+
+<label class="item item-input">
+                <span class="input-label">Fin del desafío</span>
+                <input type="date">
+            </label>
 
  <label>
      <span class="input-label">Activar Apuesta</span>
