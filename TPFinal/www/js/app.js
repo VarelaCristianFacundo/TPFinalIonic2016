@@ -63,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .state('tab.batallanaval', {
     url: '/batallanaval',
     views: {
-      'tab-chats': {
+      'tab-batallanaval': {
         templateUrl: 'templates/batallanaval.html',
         controller: 'batallanavalCtrl'
       }
@@ -76,15 +76,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-chats': {
           templateUrl: 'templates/tab-chats.html',
           controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
         }
       }
     })
