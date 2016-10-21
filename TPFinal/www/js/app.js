@@ -70,6 +70,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+.state('tab.listadodesafios', {
+    url: '/listadodesafios',
+    views: {
+      'tab-listadodesafios': {
+        templateUrl: 'templates/listadodesafios.html',
+        controller: 'listadodesafiosCtrl'
+      }
+    }
+  })
+
   .state('tab.chats', {
       url: '/chats',
       views: {

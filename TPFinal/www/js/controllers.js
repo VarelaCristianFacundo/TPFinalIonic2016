@@ -13,6 +13,8 @@ $scope.LeerCuadrado = function(elegido){
   }
 })
 
+.controller('listadodesafiosCtrl', function($scope) {})
+
 .controller('ChatsCtrl', function($scope, Chats) {})
 
 .controller('AccountCtrl', function($scope) {
