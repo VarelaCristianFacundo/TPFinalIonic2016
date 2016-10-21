@@ -1,0 +1,48 @@
+<ion-view view-title="Batalla Naval">
+  <ion-content>
+    <ion-list>
+    <div class="input-label">
+    <table style="width: 80%; margin: auto;">
+        <tr>
+            <td ng-click="LeerCuadrado('primero')"><img src="img/cuadrado1.png" height="70" width="70" alt=""></td>
+            <td ng-click="LeerCuadrado('segundo')"><img src="img/cuadrado1.png" height="70" width="70" alt=""></td><tr>
+            <td ng-click="LeerCuadrado('tercero')"><img src="img/cuadrado1.png" height="70" width="70" alt=""></td>
+            <td ng-click="LeerCuadrado('cuarto')"><img src="img/cuadrado1.png" height="70" width="70" alt=""></td></tr>
+        </tr>
+      </table>
+    </div>
+     </ion-list>
+
+   <label>
+     <span class="input-label">Ingrese el monto:</span>
+   </label>
+<ion-item class="range range-balanced">
+    <i class="icon ion-cash balanced"></i>
+    <input type="range" name="credito" min="0" max="1000" value="0">
+    <i class="icon ion-cash balanced"></i>
+  </ion-item>
+
+<label class="item item-input">
+                <span class="input-label">Inicio del desafío</span>
+                <input type="date">
+            </label>
+
+<label class="item item-input">
+                <span class="input-label">Fin del desafío</span>
+                <input type="date">
+            </label>
+
+ <label>
+     <span class="input-label">Activar Apuesta</span>
+   </label>
+
+<label class="toggle">
+   <input type="checkbox">
+   <div class="track">
+     <div class="handle"></div>
+   </div>
+</label>
+
+
+  </ion-content>
+</ion-view>
