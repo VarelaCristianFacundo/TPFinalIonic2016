@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope) {})
 
 .controller('batallanavalCtrl', function($scope) {
-
+$scope.admin = "Cris";
 $scope.cuadradoElegido="Ninguno";
 
 $scope.LeerCuadrado = function(elegido){
@@ -23,14 +23,14 @@ $scope.LeerCuadrado = function(elegido){
   };
 })
 
-.controller('LoginCtrl', function($scope, $stateParams, $timeout) {
+.controller('LoginCtrl', function($scope, $stateParams, $timeout, $state) {
   $scope.logueado = 'no';
   $scope.verificado = 'no';
 
   $scope.login = {};
   $scope.login.usuario = "cvarelagarcia@gmail.com";
   $scope.login.clave = "123456";
-  $scope.login.nombre = "Cris Varela";
+  $scope.login.nombre = "Cris";
 
   $scope.Logear = function (){
     firebase.auth().signInWithEmailAndPassword($scope.login.usuario, $scope.login.clave).catch(function (error){
@@ -43,7 +43,18 @@ $scope.LeerCuadrado = function(elegido){
         if (resultado.emailVerified == false)
           $scope.verificado = 'si';
         else
+        {
           $scope.verificado = 'no';
+          if ($scope.login.nombre == "Cris")
+          {
+            $state.go('tab.batallanaval');
+          }
+          else
+          {
+            $state.go('tab.dash');
+          }
+        }
+        
 
       });
       console.info("login correcto", resultado);
