@@ -100,6 +100,43 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+    .state('tab2', {
+    url: '/tab2',
+    abstract: true,
+    templateUrl: 'templates/admin/tabs.html'
+  })
+
+     .state('tab2.perfil', {
+    url: '/admin/perfil',
+    views: {
+      'tab-perfil': {
+        templateUrl: 'templates/admin/perfil.html',
+        controller: 'LoginCtrl'
+      }
+    }
+  })
+
+     .state('tab2.cargarcredito', {
+    url: '/admin/cargarcredito',
+    views: {
+      'tab-cargarcredito': {
+        templateUrl: 'templates/admin/cargarcredito.html',
+        controller: 'cargarcreditoCtrl'
+      }
+    }
+  })
+
+     .state('tab2.desafiosadmin', {
+    url: '/admin/desafiosadmin',
+    views: {
+      'tab-desafiosadmin': {
+        templateUrl: 'templates/admin/desafiosadmin.html',
+        controller: 'desafiosadminCtrl'
+      }
+    }
+  })
+
+
   .state('login', {
     url: '/login',
     abstract: false,
