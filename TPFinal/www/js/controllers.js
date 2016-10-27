@@ -1,10 +1,16 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope) {
+  $scope.nueva={};
+$scope.nueva.credito = 0;
+
+})
 
 .controller('batallanavalCtrl', function($scope) {
 $scope.admin = "Cris";
 $scope.cuadradoElegido="Ninguno";
+$scope.nueva={};
+$scope.nueva.credito = 0;
 
 $scope.LeerCuadrado = function(elegido){
     

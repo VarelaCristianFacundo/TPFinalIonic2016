@@ -136,6 +136,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+.state('tab2.account', {
+    url: '/admin/account',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/admin/account.html',
+        controller: 'AccountCtrl'
+      }
+    }
+  })
 
   .state('login', {
     url: '/login',

@@ -1,30 +1,34 @@
-<!--
-Create tabs with an icon and label, using the tabs-positive style.
-Each tab's child <ion-nav-view> directive will have its own
-navigation history that also transitions its views in and out.
--->
-<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+<ion-view view-title="Listado de Desafios">
+  <ion-content style="background: url(img/Background.jpg) no-repeat center;background-size:cover;">
+ 
+<div class="list">
+  <div class="item item-divider">
+    Desafíos de Prode
+  </div>
 
-  <!-- Dashboard Tab -->
+  <a class="item" href="#">
+    <i class="icon ion-navigate"></i>
+    x
+  </a>
+  <a class="item" href="#">
+    <i class="icon ion-navigate"></i>
+    y
+  </a>
+</div>
 
-<ion-tab title="Cargar Credito" icon-off="ion-social-usd-outline" icon-on="ion-social-usd" href="#/tab2/admin/cargarcredito">
-    <ion-nav-view name="tab-cargarcredito"></ion-nav-view>
-  </ion-tab>
+<div class="list">
+  <div class="item item-divider">
+    Desafíos de Batalla Naval
+  </div>
 
-  <ion-tab title="Listado de Desafios" icon-off="ion-android-list" icon-on="ion-android-list" href="#/tab2/admin/desafiosadmin">
-    <ion-nav-view name="tab-desafiosadmin"></ion-nav-view>
-  </ion-tab>
+   <a class="item" href="#">
+    <i class="icon ion-navigate"></i>
+    x
+  </a>
+  <a class="item" href="#">
+    <i class="icon ion-navigate"></i>
+    y
+  </a>
 
-
-  <!-- Chats Tab -->
-  <ion-tab title="Perfil" icon-off="ion-person-stalker" icon-on="ion-person-stalker" href="#/tab2/admin/perfil">
-    <ion-nav-view name="tab-perfil"></ion-nav-view>
-  </ion-tab>
-
-  <!-- Account Tab -->
- <ion-tab title="Información" icon-off="ion-information" icon-on="ion-information-circled" href="#/tab/account">
-    <ion-nav-view name="tab-account"></ion-nav-view>
-  </ion-tab>
-
-
-</ion-tabs>
+  </ion-content>
+</ion-view>
