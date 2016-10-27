@@ -80,6 +80,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+.state('tab.perfiluser', {
+    url: '/perfiluser',
+    views: {
+      'tab-perfiluser': {
+        templateUrl: 'templates/perfiluser.html',
+        controller: 'perfiluserCtrl'
+      }
+    }
+  })
+
+
   .state('tab.chats', {
       url: '/chats',
       views: {
