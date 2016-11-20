@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'login.controller', 'desafio.controller' , 'batalla.controller'])
+angular.module('starter', ['ionic', 'starter.controllers', 'listadesafios.controller','login.controller', 'desafio.controller' , 'batalla.controller'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -50,6 +50,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'login.controller', '
     }
   })
 
+  .state('tab.listadesafios', {
+    url: '/listadesafios',
+    views: {
+      'tab-listadesafios': {
+        templateUrl: 'templates/listadesafios.html',
+        controller: 'listaDesafiosCtrl'
+      }
+    }
+  })
+
   .state('tab.login', {
     url: '/login',
     views: {
@@ -70,15 +80,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'login.controller', '
     }
   })
 
-.state('tab.listadodesafios', {
-    url: '/listadodesafios',
-    views: {
-      'tab-listadodesafios': {
-        templateUrl: 'templates/listadodesafios.html',
-        controller: 'listadodesafiosCtrl'
-      }
-    }
-  })
 
 .state('tab.perfiluser', {
     url: '/perfiluser',

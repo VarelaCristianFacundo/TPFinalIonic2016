@@ -4,8 +4,6 @@ angular.module('starter.controllers', [])
   $state.go('tab.login');
 })
 
-.controller('listadodesafiosCtrl', function($scope) {})
-
 .controller('desafiosadminCtrl', function($scope) {})
 
 .controller('cargarcreditoCtrl', function($scope) {})
