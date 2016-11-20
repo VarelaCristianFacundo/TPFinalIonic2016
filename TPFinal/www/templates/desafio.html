@@ -4,7 +4,7 @@
      <h3>Ingrese el desafío</h3>
   </label>
 <ion-item >
-<input type="text" placeholder="Escribir Desafio" style="width:100%; text-align: center; margin: auto;">
+<input type="text" placeholder="Escribir Desafio" ng-model='nueva.desc' style="width:100%; text-align: center; margin: auto;">
 </ion-item>
 
 
@@ -24,24 +24,17 @@
                 <span class="input-label">Inicio del desafío</span>
                 <i class="icon ion-ios-calendar-outline"></i>
                 <input type="date">
-            </label>
+</label>
 
 <label class="item item-input">
                 <span class="input-label">Fin del desafío</span>
                 <i class="icon ion-ios-calendar-outline"></i>
                 <input type="date">
-            </label>
+</label>
 
-
-<label class="item item-input">
-
-<a class="button button-balanced" style="width: 50%; text-align: center; margin: auto;" ng-click="Aceptar()"><i class="ion-plus-circled"></i> Apostar</a>
-            </label>
-
-
-  </ion-content>
-
-
+<ion-item>
+<a class="button button-balanced" style="width: 50%; text-align: center; margin: auto;" ng-click="Apostar()"><i class="ion-plus-circled"></i> Apostar</a>
+</ion-item>
 
   </ion-content>
 </ion-view>
