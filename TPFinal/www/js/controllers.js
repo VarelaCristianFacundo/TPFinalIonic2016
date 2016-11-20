@@ -1,12 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
-  $scope.nueva={};
-$scope.nueva.credito = 0;
-$scope.cantPartidas;
-
-})
-
 .controller('perfiluserCtrl', function($scope, $state) {
   $state.go('tab.login');
 })
@@ -53,7 +46,7 @@ $scope.cantPartidas;
           }
           else
           {
-            $state.go('tab.dash');
+            $state.go('tab.desafio');
           }
         }
         
