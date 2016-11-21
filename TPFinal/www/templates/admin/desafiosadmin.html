@@ -1,34 +1,24 @@
 <ion-view view-title="Listado de Desafios">
-  <ion-content style="">
+  <ion-content>
  
 <div class="list">
   <div class="item item-divider">
-    Desafíos de Prode
+    Desafíos
   </div>
 
-  <a class="item" href="#">
-    <i class="icon ion-navigate"></i>
-    x
-  </a>
-  <a class="item" href="#">
-    <i class="icon ion-navigate"></i>
-    y
-  </a>
-</div>
+    <ion-item ng-repeat="desafio in desafios" ng-click="AbrirDesafio()">
+        {{desafio.desafiante}} apuesta que {{desafio.Descripcion}} {{desafio.Credito}} Creditos
+     </ion-item>
+
 
 <div class="list">
   <div class="item item-divider">
     Desafíos de Batalla Naval
   </div>
 
-   <a class="item" href="#">
-    <i class="icon ion-navigate"></i>
-    x
-  </a>
-  <a class="item" href="#">
-    <i class="icon ion-navigate"></i>
-    y
-  </a>
+    <ion-item ng-repeat="batalla in batallas" ng-click="AbrirDesafio()">
+        {{batalla.desafiante}} apuesta que la nave esta {{batalla.Posicion}} {{batalla.Credito}} Creditos
+     </ion-item>
 
   </ion-content>
 </ion-view>

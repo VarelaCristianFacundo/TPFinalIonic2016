@@ -138,7 +138,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'listadesafios.contro
     views: {
       'tab-desafiosadmin': {
         templateUrl: 'templates/admin/desafiosadmin.html',
-        controller: 'desafiosadminCtrl'
+        controller: 'listaDesafiosCtrl'
       }
     }
   })
