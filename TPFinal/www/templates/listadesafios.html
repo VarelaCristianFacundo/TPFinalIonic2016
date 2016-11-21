@@ -1,11 +1,25 @@
 <ion-view view-title="Listado de Desafios">
   <ion-content>
  
-<ion-list>
-      <ion-item ng-repeat="desafio in desafios">
-        "{{desafio.desc}}" ({{desafio.cred}} créditos)
-        {{desafios}}
-      </ion-item>
-    </ion-list>
+<div class="list">
+  <div class="item item-divider">
+    Desafíos
+  </div>
+
+    <ion-item ng-repeat="desafio in desafios" ng-click="AbrirDesafio()">
+        {{desafio.desafiante}} apuesta que {{desafio.Descripcion}} {{desafio.Credito}} Creditos
+     </ion-item>
+
+
+<div class="list">
+  <div class="item item-divider">
+    Desafíos de Batalla Naval
+  </div>
+
+    <ion-item ng-repeat="batalla in batallas" ng-click="AbrirDesafio()">
+        {{batalla.desafiante}} apuesta que la nave esta {{batalla.Posicion}} {{batalla.Credito}} Creditos
+     </ion-item>
+
   </ion-content>
 </ion-view>
+
