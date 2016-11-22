@@ -12,6 +12,8 @@ angular.module('listadesafios.controller', [])
   $scope.batalla.desc = "";
   $scope.batalla.cred = "";
   $scope.batallas =[];
+  $scope.estado = {};
+  $scope.estado.bandera = "lista";
 
 
 	var refDesafios = new firebase.database().ref('desafios/');
@@ -41,5 +43,18 @@ angular.module('listadesafios.controller', [])
     });
 });
 
+$scope.AbrirDesafio = function(){
+  console.info($scope.batalla);  
+  $scope.estado.bandera = "nuevodesafio";
+  console.info($scope.estado.bandera);  
 
+};
+
+$scope.Cancelar = function(){
+  $scope.estado.bandera = "lista";
+}
+
+$scope.Aceptar = function(){
+  $scope.estado.bandera = "lista";
+}
 })
