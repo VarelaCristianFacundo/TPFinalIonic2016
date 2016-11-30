@@ -6,6 +6,7 @@ $scope.admin = "Cris";
 $scope.cuadradoElegido="Ninguno";
 $scope.nueva={};
 $scope.nueva.credito = 0;
+$scope.nueva.duracion = 0;
 
 var partidasRef = new Firebase("https://loginsupervisada.firebaseio.com/partidas");
 partidasRef.on('child_added', function(data){

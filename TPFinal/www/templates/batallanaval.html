@@ -1,8 +1,8 @@
 <ion-view view-title="Batalla Naval">
   <ion-content style="width:50%; text-align: center; margin: auto;">
     <ion-list>
-    <div class="input-label" style="width: 30%; text-align: center; margin: auto;">
-    <table>
+    <div class="input-label" style="width: 50%; text-align: center; margin: auto;">
+    <table style="width: 50%; text-align: center; margin: auto;">
         <tr>
             <td ng-click="LeerCuadrado('Primero')">
               <input type="radio" name= "elegido" class="button button-assertive"></td>
@@ -14,36 +14,33 @@
               <input type="radio" name= "elegido" class="button button-assertive"></td></tr>
         </tr>
       </table>
-    </div>
      </ion-list>
      <div> Sector del barco: {{cuadradoElegido}}</div>
 
    <label>
-     <span class="input-label" style="width: 50%; text-align: center; margin: auto;">Cantidad a Apostar:</span>
+     <span class="input-label" style="width: 100%; text-align: center; margin: auto;"></span>
    </label>
-<ion-item class="range range-balanced">
+   <label>
+  <ion-item class="range range-balanced">
     <i class="icon ion-cash balanced"></i>
     <input type="range" name="credito" ng-model= "nueva.credito" min="0" max="1000" value="0">
     <i class="icon ion-cash balanced"></i>
   </ion-item>
-  Creditos:{{nueva.credito}}
+  </label>
+  Cantidad: {{nueva.credito}} Créditos
 
-<label class="item item-input">
-                <span class="input-label">Inicio del desafío</span>
-                <i class="icon ion-ios-calendar-outline"></i>
-                <input type="date">
-            </label>
-
-<label class="item item-input">
-                <span class="input-label">Fin del desafío</span>
-                <i class="icon ion-ios-calendar-outline"></i>
-                <input type="date">
-            </label>
-<label class="item item-input">
-</label>
-<a class="button button-balanced" style="width: 50%; text-align: center; margin: auto;" ng-click="Apostar()"><i class="ion-plus-circled"></i> Apostar</a>
-
-
-
+  <label>
+     <span class="input-label" style="width: 100%; text-align: center; margin: auto;"></span>
+   </label>
+   <label>
+  <ion-item class="range range-positive">
+    <i class="icon ion-android-time positive"></i>
+    <input type="range" name="duracion" ng-model= "nueva.duracion" min="0" max="6" value="0">
+    <i class="icon ion-android-time positive"></i>
+  </ion-item>
+  </label>
+  Duración del desafío: {{nueva.duracion}} Horas.
+ 
+  <a class="button button-balanced" style="width: 50%; text-align: center; margin: auto;" ng-click="Apostar()"><i class="ion-plus-circled"></i> Apostar</a>
   </ion-content>
 </ion-view>
