@@ -4,6 +4,10 @@ angular.module('login.controller', [])
   $scope.logueado = 'no';
   $scope.verificado = 'no';
 
+  $scope.imagen={};
+  $scope.imagen.foto="dinero.jpg";
+
+
   $scope.login = {};
   $scope.login.usuario = "cvarelagarcia@gmail.com";
   $scope.login.clave = "123456";
@@ -38,6 +42,24 @@ angular.module('login.controller', [])
 
     });
   };
+
+$scope.Administrador=function(){
+  $scope.login.usuario = "cvarelagarcia@gmail.com";
+  $scope.login.clave = "123456";
+  $scope.login.nombre = "Cris";
+  }
+
+  $scope.JugadorUno=function(){
+    $scope.login.usuario="cvarela@iplan.com.ar";
+    $scope.login.clave = "123456";
+    $scope.login.nombre = "Facu";
+  }
+
+  $scope.JugadorDos=function(){
+    $scope.login.usuario="cvarela@iplan.com.ar";
+    $scope.login.clave = "123456";
+    $scope.login.nombre = "Octavio";
+  }
 
   $scope.Deslogear = function (){
     firebase.auth().signOut().catch(function (error){

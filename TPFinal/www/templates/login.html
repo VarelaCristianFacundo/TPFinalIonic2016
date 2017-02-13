@@ -1,6 +1,15 @@
 <ion-view view-title="Login">
     <ion-content>
-    <form>
+    <form>      
+      <div class="col text-center" ng-if="logueado == 'no'">
+         <button class="button button-royal" style="width: 200px" ng-click="Administrador()"><i class="ion-android-contact"></i> Administrador</button>
+         </div>
+         <div class="col text-center" ng-if="logueado == 'no'">
+         <button class="button button-positive" style="width: 200px" ng-click="JugadorUno()"><i class="ion-android-contact"></i> Jugador 1</button>
+         </div>
+         <div class="col text-center" ng-if="logueado == 'no'">
+         <button class="button button-positive" style="width: 200px" ng-click="JugadorDos()"><i class="ion-android-contact"></i> Jugador 2</button>
+         </div>
       <div class="list" ng-if="logueado == 'no'" >
         <label class="item item-input">
           <span class="input-label">Nombre</span>
@@ -19,11 +28,18 @@
           <input type="text" ng-model="login.Edad">
         </label>
         <div class="padding">
-          <button class="button button-block button-positive" ng-click="Logear()" >Log In</button>
-          <button class="button button-block button-positive" ng-click="Resetear()" >Olvide mi contraseña</button>
-          <button class="button button-block button-positive" ng-click="Registrar()" >Registrame</button>
-          <button class="button button-block button-positive" ng-click="LoginGitHub()" >Login con GitHub</button>
-          <button class="button button-block button-positive" ng-click="Completar()" >Completar Datos</button>
+          <div class="col text-center">
+         <button class="button button-calm" style="width: 500px" ng-click="Logear()"><i class="ion-android-contact"></i> Log In</button>
+         </div>
+         <div class="col text-center">
+         <button class="button button-assertive" style="width: 500px" ng-click="Resetear()"><i class="ion-android-contact"></i> Olvide mi contraseña</button>
+         </div>
+         <div class="col text-center">
+         <button class="button button-balanced" style="width: 500px" ng-click="Registrar()"><i class="ion-android-contact"></i> Registrame</button>
+         </div>
+         <div class="col text-center">
+         <button class="button button-dark" style="width: 500px" ng-click="LoginGitHub()"><i class="ion-android-contact"></i> Login con GitHub</button>
+         </div>         
         </div>
         <label class="item item-input">
           <span class="input-label" style="color:red">{{errorMensaje}}</span>
