@@ -1,31 +1,23 @@
 <ion-view view-title="Desafio">
-    <ion-content>
+    <ion-content class="col text-center">
     <form>      
       <div class="col text-center" ng-if="logueado == 'no'">
          <button class="button button-royal" style="width: 200px" ng-click="Administrador()"><i class="ion-android-contact"></i> Administrador</button>
          </div>
-         <ion-list class="col text-center" ng-if="logueado == 'no'">
+         <ion-list  ng-if="logueado == 'no'">
               <button class="button button-positive" style="width: 200px" ng-click="JugadorUno()"><i class="ion-android-contact"></i> Jugador 1</button>
                  <button ion-button outline item-right icon-left class="button button-positive" style="width: 200px" ng-click="JugadorDos()"><i class="ion-android-contact"></i> Jugador 2</button>
           </ion-list>
-      <div class="list" ng-if="logueado == 'no'" >
-        <label class="item item-input">
-          <span class="input-label">Nombre</span>
-          <input type="text" ng-model="login.nombre">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Correo</span>
-          <input type="text" ng-model="login.usuario">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Contraseña</span>
-          <input type="password" ng-model="login.clave">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Edad</span>
-          <input type="text" ng-model="login.Edad">
-        </label>
-        <div class="padding">
+          <ion-list  ng-if="logueado == 'no'">
+        <div class="list " ng-if="logueado == 'no'">
+
+            <input type="text" placeholder="Nombre" ng-model="login.nombre" class="col text-center">
+            <input type="text" placeholder="Correo" ng-model="login.usuario" class="col text-center"> 
+            <input type="password" placeholder="Contraseña" ng-model="login.clave" class="col text-center">
+
+        </div>
+        </ion-list>
+        <div class="padding" ng-if="logueado == 'no'">
           <div class="col text-center">
          <button class="button button-balanced" style="width: 200px" ng-click="Logear()"><i class="ion-log-in"></i> Log In</button>
          </div>         
@@ -38,11 +30,8 @@
          <div class="col text-center">
          <button class="button button-dark" style="width: 200px" ng-click="LoginGitHub()"><i class="ion-social-github-outline"></i> Login con GitHub</button>
          </div>         
-        </div>
-        <label class="item item-input">
-          <span class="input-label" style="color:red">{{errorMensaje}}</span>
-        </label>
-      </div>
+         <span class="input-label" style="color:red">{{errorMensaje}}</span> 
+        </div>          
       <div class="list" ng-if="logueado == 'si'">
         <div class="padding">
         <button class="button button-block button-positive" ng-if="verificado == 'si'" ng-click="VerificarMail()">Verificar Mail</button>

@@ -9,9 +9,6 @@ angular.module('login.controller', [])
 
 
   $scope.login = {};
-  $scope.login.usuario = "cvarelagarcia@gmail.com";
-  $scope.login.clave = "123456";
-  $scope.login.nombre = "Cris";
 
   $scope.Logear = function (){
     firebase.auth().signInWithEmailAndPassword($scope.login.usuario, $scope.login.clave).catch(function (error){
