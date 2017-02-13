@@ -2,22 +2,26 @@
   <ion-content>
  
 <div class="list" ng-show="estado.bandera == 'lista'">
-  <div class="item item-divider">
+  <div class="item item-divider" style="width: 50%; text-align: center; margin: auto;">
     Desafíos
   </div>
 
-    <ion-item ng-repeat="desafio in desafios" ng-click="AbrirDesafio()">
-        {{desafio.desafiante}} apuesta que {{desafio.Descripcion}} {{desafio.Credito}} Creditos
+    <ion-item ng-repeat="desafio in desafios" style="width: 50%; text-align: center; margin: auto;">
+        <td></td>
+        <a class="button button-balanced" ng-click="AceptDesafio()">Aceptar</a>
+        <label>{{desafio.desafiante}} apuesta {{desafio.Credito}} Creditos que {{desafio.Descripcion}} 
+        </label>
      </ion-item>
 
 
-  <div class="item item-divider">
+  <div class="item item-divider" style="width: 50%; text-align: center; margin: auto;">
     Desafíos de Batalla Naval
   </div>
 
-    <ion-item ng-repeat="batalla in batallas" ng-click="AbrirDesafio()">
+    <ion-item ng-repeat="batalla in batallas" style="width: 50%; text-align: center; margin: auto;">
+        <a class="button button-balanced" ng-click="AceptDesafio()">Aceptar</a>
         {{batalla.desafiante}} apuesta que la nave esta {{batalla.Posicion}} {{batalla.Credito}} Creditos
-     </ion-item>
+    </ion-item>
   </div>
 
 <div ng-show="estado.bandera == 'nuevodesafio'">

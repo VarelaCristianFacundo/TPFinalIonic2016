@@ -43,6 +43,12 @@ angular.module('listadesafios.controller', [])
     });
 });
 
+$scope.AceptDesafio = function(){
+
+  
+
+};
+
 $scope.AbrirDesafio = function(){
   console.info($scope.batalla);  
   $scope.estado.bandera = "nuevodesafio";
