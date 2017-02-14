@@ -1,6 +1,6 @@
 angular.module('login.controller', [])
 
-.controller('LoginCtrl', function($scope, $stateParams, $timeout, $state) {
+.controller('LoginCtrl', function($scope, $stateParams, $timeout, $state, $cordovaOauth) {
   $scope.logueado = 'no';
   $scope.verificado = 'no';
 
@@ -122,8 +122,16 @@ $scope.Administrador=function(){
     });
   };
 
-  $scope.LoginGitHub = function (){
-    var provider = new firebase.auth.GithubAuthProvider();
+  $scope.LoginGitHub = function (){ 
+    $cordovaOauth.github("268ca57667d46532b4a0", "ead175145479d458e210f8b2724b11d735476410", []).then(function(result) {
+      alert ("hola");
+    console.log("Response Object -> " + JSON.stringify(result));
+}, function(error) {
+    console.log("Error -> " + error);
+});
+
+
+ /*   var provider = new firebase.auth.GithubAuthProvider();
     provider.addScope('repo');
 
     firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -145,6 +153,6 @@ $scope.Administrador=function(){
       var credential = error.credential;
       console.info(errorMessage);
       // ...
-    });
+    });*/
   };
 });

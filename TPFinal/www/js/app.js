@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'perfiladmin.controller', 'starter.controllers', 'desafiosadmin.controller','cargarcredito.controller' , 'listadesafios.controller','login.controller', 'desafio.controller' , 'batalla.controller' ,'ngCordova' , 'perfiluser.controller', 'servicios'])
+angular.module('starter', ['ionic', 'perfiladmin.controller', 'starter.controllers', 'desafiosadmin.controller','cargarcredito.controller' ,'ngCordova' , 'ngCordovaOauth', 'listadesafios.controller','login.controller', 'desafio.controller' , 'batalla.controller' , 'perfiluser.controller', 'servicios'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
