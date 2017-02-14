@@ -124,13 +124,61 @@ $scope.Administrador=function(){
 
   $scope.LoginGitHub = function (){ 
     $cordovaOauth.github("268ca57667d46532b4a0", "ead175145479d458e210f8b2724b11d735476410", []).then(function(result) {
-      alert ("hola");
-    console.log("Response Object -> " + JSON.stringify(result));
-}, function(error) {
+    var token = result.access_token;
+    var credential = firebase.auth.GithubAuthProvider.credential(token);
+    console.info("result", result);
+    console.info("credential", credential);
+    firebase.auth().signInWithCredential(credential)
+    .catch(function(error){
+      console.info("error", error);
+      var credential = error.credential;
+      console.info("error credential", error.credential);
+    })
+    
+    .then(function(respuesta){
+        console.info("respuesta", respuesta);
+        console.info("respuesta.providerData[0]",respuesta.providerData[0]);
+        console.info("respuesta.uid",respuesta.uid);              
+              
+        var providerData = respuesta.providerData[0];
+
+        if(respuesta.providerData[0].email == null){
+          console.info("EMAIL NULL (Lo tiene oculto en el Settings de su GitHub)");
+        }
+        
+        var ref = new Firebase("https://loginsupervisada.firebaseio.com/usuario/"+respuesta.uid);
+        
+        ref.once('value', function(snapshot) {
+          console.info("snapshot val", snapshot.val());
+
+          if (snapshot.val() == null) {
+            var usuario = {
+              nombre: providerData.displayName,
+              creditos: 1000,
+              correo: providerData.email
+            };
+
+            ref.set(usuario);
+            console.info("USUARIO", usuario);
+
+            console.info("Bienvenido", respuesta);
+          }
+
+          $timeout(function(){
+            if(respuesta != undefined){
+              console.info("Bienvenido", respuesta);
+              $state.go('tab.desafio');
+            }
+            
+            else{
+              console.info("Error de ingreso", respuesta);
+            }
+          }, 1000);
+        });
+      });
+    }, function(error) {
     console.log("Error -> " + error);
-});
-
-
+    });
  /*   var provider = new firebase.auth.GithubAuthProvider();
     provider.addScope('repo');
 
