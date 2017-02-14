@@ -6,10 +6,10 @@
     Desafíos
   </div>
 
-    <ion-item ng-if="desafio.desafiante!=referencia.nombre && desafio.Aceptante == null " ng-repeat="desafio in desafios" style="width: 50%; text-align: left; margin: auto;">
+    <ion-item ng-if="desafio.desafiante!=referencia.nombre && desafio.aceptante == null " ng-repeat="desafio in desafios" style="width: 50%; text-align: left; margin: auto;">
         <td></td>
         <a class="button button-balanced" ng-click="AceptDesafio(desafio)">Aceptar</a>
-        <label>{{desafio.desafiante}} apuesta {{desafio.Credito}} Creditos que {{desafio.Descripcion}} 
+        <label>{{desafio.desafiante}} apuesta {{desafio.credito}} Creditos que {{desafio.descripcion}} 
         </label>
      </ion-item>
 

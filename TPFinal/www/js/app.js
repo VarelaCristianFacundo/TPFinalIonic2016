@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','cargarcredito.controller' , 'listadesafios.controller','login.controller', 'desafio.controller' , 'batalla.controller' ,'ngCordova' , 'perfiluser.controller', 'servicios'])
+angular.module('starter', ['ionic', 'perfiladmin.controller', 'starter.controllers', 'desafiosadmin.controller','cargarcredito.controller' , 'listadesafios.controller','login.controller', 'desafio.controller' , 'batalla.controller' ,'ngCordova' , 'perfiluser.controller', 'servicios'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -118,7 +118,7 @@ angular.module('starter', ['ionic', 'starter.controllers','cargarcredito.control
     views: {
       'tab-perfil': {
         templateUrl: 'templates/admin/perfil.html',
-        controller: 'LoginCtrl'
+        controller: 'perfilCtrl'
       }
     }
   })
@@ -138,7 +138,7 @@ angular.module('starter', ['ionic', 'starter.controllers','cargarcredito.control
     views: {
       'tab-desafiosadmin': {
         templateUrl: 'templates/admin/desafiosadmin.html',
-        controller: 'listaDesafiosCtrl'
+        controller: 'desafiosadminCtrl'
       }
     }
   })

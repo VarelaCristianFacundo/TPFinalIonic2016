@@ -1,7 +1,5 @@
 angular.module('starter.controllers', [])
 
-.controller('desafiosadminCtrl', function($scope) {})
-
 .controller('ChatsCtrl', function($scope, Chats) {})
 
 .controller('AccountCtrl', function($scope) {

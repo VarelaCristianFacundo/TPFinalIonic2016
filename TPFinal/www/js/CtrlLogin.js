@@ -23,7 +23,7 @@ angular.module('login.controller', [])
         else
         {
           $scope.verificado = 'no';
-          if ($scope.login.nombre == "Cris")
+          if ($scope.login.nombre == "Administrador")
           {
             $state.go('tab2.perfil');
           }
@@ -44,7 +44,7 @@ angular.module('login.controller', [])
 $scope.Administrador=function(){
   $scope.login.usuario = "cvarelagarcia@gmail.com";
   $scope.login.clave = "123456";
-  $scope.login.nombre = "Cris";
+  $scope.login.nombre = "Administrador";
   }
 
   $scope.JugadorUno=function(){
@@ -54,9 +54,9 @@ $scope.Administrador=function(){
   }
 
   $scope.JugadorDos=function(){
-    $scope.login.usuario="cvarela@iplan.com.ar";
+    $scope.login.usuario="lautaroriveiro91@gmail.com";
     $scope.login.clave = "123456";
-    $scope.login.nombre = "Octavio";
+    $scope.login.nombre = "Lauta";
   }
 
   $scope.Deslogear = function (){

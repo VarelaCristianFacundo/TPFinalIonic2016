@@ -6,10 +6,13 @@
     Desafíos
   </div>
 
-    <ion-item ng-repeat="desafio in desafios" ng-click="AbrirDesafio()">
-        {{desafio.desafiante}} apuesta que {{desafio.Descripcion}} {{desafio.Credito}} Creditos
+    <ion-item ng-if="desafio.estado != 'finalizado'" ng-repeat="desafio in desafios" style="width: 50%; text-align: left; margin: auto;">
+        <td></td>
+        <a class="button button-balanced" ng-click="Verdadero(desafio)">V</a>
+        <a class="button button-assertive" ng-click="Falso(desafio)">F</a>
+        <label>{{desafio.desafiante}} apuesta {{desafio.credito}} Creditos que {{desafio.descripcion}} 
+        </label>
      </ion-item>
-
 
 <div class="list">
   <div class="item item-divider">

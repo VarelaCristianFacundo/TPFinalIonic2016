@@ -1,6 +1,6 @@
-angular.module('listadesafios.controller', [])
+angular.module('desafiosadmin.controller', [])
 
-.controller('listaDesafiosCtrl', function($scope, $state, $timeout, sLogueado) {
+.controller('desafiosadminCtrl', function($scope, $state, $timeout, sLogueado) {
 
 
 	$scope.desafio = {};
@@ -54,24 +54,44 @@ angular.module('listadesafios.controller', [])
     });
 });
 
-$scope.AceptDesafio = function(value){
-
+$scope.Verdadero = function(value){
   console.info (value);
-  if (value.credito <= $scope.referencia.creditos)
-  {
-    $scope.referencia.creditos = $scope.referencia.creditos - value.credito;
-    sLogueado.actualizarCreditos ($scope.referencia.creditos);
-    var refDesafios = new firebase.database().ref('desafios/');
-    refDesafios.child(value.key).update({
-     aceptante: $scope.referencia.nombre,
-     aceptanteUID: firebase.auth().currentUser.uid,
-     creditos: $scope.referencia.creditos
-    });
-  }
-  else
-  {
-    console.info ("Credito insuficiente");
-  }
+  
+  var partidasRef = new Firebase("https://loginsupervisada.firebaseio.com/usuario/" + value.desafianteUID);
+  partidasRef.once('value', function(data){
+  var usuario = data.val();
+
+  usuario.creditos = usuario.creditos + (value.credito * 2);
+  partidasRef.update({creditos:usuario.creditos});
+ });
+
+
+  $scope.referencia.creditos = $scope.referencia.creditos + (value.Credito * 2);
+
+  var refDesafios = new firebase.database().ref('desafios/');
+  refDesafios.child(value.key).update({
+  estado: "finalizado"
+  });
+};
+
+$scope.Falso = function(value){
+  console.info (value);
+  
+  var partidasRef = new Firebase("https://loginsupervisada.firebaseio.com/usuario/" + value.aceptanteUID);
+  partidasRef.once('value', function(data){
+  var usuario = data.val();
+
+  usuario.creditos = usuario.creditos + (value.credito * 2);
+  partidasRef.update({creditos:usuario.creditos});
+ });
+
+
+  $scope.referencia.creditos = $scope.referencia.creditos + (value.Credito * 2);
+
+  var refDesafios = new firebase.database().ref('desafios/');
+  refDesafios.child(value.key).update({
+  estado: "finalizado"
+  });
 };
 
 $scope.AcepteDesafio = function(value){

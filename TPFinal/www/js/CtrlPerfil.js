@@ -16,16 +16,8 @@ $scope.tarjetas= [];
       if (data.key == "cantidad") {
         $scope.referencia.creditos += data.val();
       };
-      //console.info(data.val(), data.key);
-      /*var tarjeta = data.val();
-      tarjeta.key = data.key;
-      $scope.tarjetas.push(tarjeta);
-      console.info($scope.tarjetas);
-      $scope.referencia.creditos += $scope.tarjetas[0];*/
     });
-
 });
-
     }, function(error){
       console.info("error",error);
       alert ("Ha ocurrido un error: " + error);
