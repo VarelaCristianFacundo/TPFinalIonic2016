@@ -18,8 +18,8 @@
     Desafíos de Batalla Naval
   </div>
 
-    <ion-item ng-if="batalla.desafiante!=referencia.nombre && desafio.Aceptante == null " ng-repeat="batalla in batallas" style="width: 50%; text-align: left; margin: auto;">
-        <a class="button button-balanced" ng-click="AceptDesafio()">Aceptar</a>
+    <ion-item ng-if="batalla.desafiante!=referencia.nombre && batalla.Aceptante == null " ng-repeat="batalla in batallas" style="width: 50%; text-align: left; margin: auto;">
+        <a class="button button-balanced" ng-click="AcepteDesafio(batalla)">Aceptar</a>
         {{batalla.desafiante}} apuesta que la nave esta {{batalla.Posicion}} {{batalla.Credito}} Creditos
     </ion-item>
   </div>

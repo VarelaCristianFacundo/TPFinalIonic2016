@@ -57,12 +57,29 @@ angular.module('listadesafios.controller', [])
 $scope.AceptDesafio = function(value){
 
   console.info (value);
-  var refDesafios = new firebase.database().ref('desafios/');
+  if (value.Credito <= $scope.referencia.creditos)
+  {
+    $scope.referencia.creditos = $scope.referencia.creditos - value.Credito;
+    var refDesafios = new firebase.database().ref('desafios/');
+    refDesafios.child(value.key).update({
+     Aceptante: $scope.referencia.nombre,
+     creditos: $scope.referencia.creditos
+    });
+  }
+  else
+  {
+    console.info ("Credito insuficiente");
+  }
+};
+
+$scope.AcepteDesafio = function(value){
+
+  console.info (value);
+  var refDesafios = new firebase.database().ref('partidasBatallaNaval/');
   refDesafios.child(value.key).update({
     Aceptante: $scope.referencia.nombre
   });
 };
-
 
 $scope.Cancelar = function(){
   $scope.estado.bandera = "lista";
