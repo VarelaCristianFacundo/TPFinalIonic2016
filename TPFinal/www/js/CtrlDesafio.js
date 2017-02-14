@@ -8,8 +8,6 @@ $scope.cantPartidas;
 $scope.referencia = sLogueado.traerUser();
 
 $scope.Apostar = function(){
-console.info(sLogueado.traerUser());
-  console.info($scope.referencia);
   $scope.referencia.creditos = $scope.referencia.creditos - $scope.nueva.credito;
   sLogueado.actualizarCreditos ($scope.referencia.creditos);
   firebase.database().ref("/desafios/").push({

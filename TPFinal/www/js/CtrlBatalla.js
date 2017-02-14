@@ -22,13 +22,15 @@ $timeout(function(){
  });
 
 $scope.Apostar = function(){
+  $scope.referencia.creditos = $scope.referencia.creditos - $scope.nueva.credito;
+  sLogueado.actualizarCreditos ($scope.referencia.creditos);
 
   firebase.database().ref("/partidasBatallaNaval/").push({
   desafiante: $scope.referencia.nombre,
-  Posicion: $scope.cuadradoElegido,
-  Credito: $scope.nueva.credito
+  posicion: $scope.cuadradoElegido,
+  desafianteUID: firebase.auth().currentUser.uid,
+  credito: $scope.nueva.credito
   })
- $scope.cantPartidas = $scope.cantPartidas + 1;
 };
 
 

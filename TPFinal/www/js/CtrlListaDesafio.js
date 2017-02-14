@@ -8,6 +8,7 @@ angular.module('listadesafios.controller', [])
 	$scope.desafio.cred = "";
   $scope.desafios =[];
 
+  $scope.detalleBatalla={};
   $scope.batalla = {};
   $scope.batalla.desc = "";
   $scope.batalla.cred = "";
@@ -54,6 +55,18 @@ angular.module('listadesafios.controller', [])
     });
 });
 
+    refBatalla.on('child_changed', function(data){
+    console.info(data);
+    $timeout(function(){
+      for (var i in $scope.batallas) {
+        if ($scope.batallas[i].key == data.key) {
+          $scope.batallas[i] = data.val();
+          $scope.batallas[i].key = data.key;
+        };
+      };
+    });
+});
+
 $scope.AceptDesafio = function(value){
 
   console.info (value);
@@ -74,14 +87,56 @@ $scope.AceptDesafio = function(value){
   }
 };
 
-$scope.AcepteDesafio = function(value){
+$scope.GuardarBatalla = function(value){
+    $scope.estado.bandera="enjuego";
 
-  console.info (value);
-  var refDesafios = new firebase.database().ref('partidasBatallaNaval/');
-  refDesafios.child(value.key).update({
-    Aceptante: $scope.referencia.nombre
-  });
+    $scope.detalleBatalla = value;
+    console.info("detalle", $scope.detalleBatalla);
+}
+
+$scope.AcepteDesafio = function(){
+  console.info("credito batalla", $scope.detalleBatalla.credito);
+  console.info("credito referencia", $scope.referencia.creditos);
+
+  if (parseInt($scope.detalleBatalla.credito) <= parseInt($scope.referencia.creditos))
+  {
+
+    $scope.estado.bandera="lista";
+    var refDesafios = new firebase.database().ref('partidasBatallaNaval/');
+      refDesafios.child($scope.detalleBatalla.key).update({
+        aceptante: $scope.referencia.nombre,
+        aceptanteUID: firebase.auth().currentUser.uid
+      });
+    if ($scope.cuadradoElegido == $scope.detalleBatalla.posicion)
+      {
+            $scope.referencia.creditos = parseInt($scope.referencia.creditos) + parseInt($scope.detalleBatalla.credito);
+            sLogueado.actualizarCreditos ($scope.referencia.creditos);
+      }
+      else
+      {
+              var partidasRef = new Firebase("https://loginsupervisada.firebaseio.com/usuario/" + $scope.detalleBatalla.desafianteUID);
+              partidasRef.once('value', function(data){
+              var usuario = data.val();
+
+              usuario.creditos = usuario.creditos + ($scope.detalleBatalla.credito * 2);
+              partidasRef.update({creditos:usuario.creditos});
+              });
+      }
+  }
+  else
+  {
+    console.info ("Credito insuficiente");
+  }
+  $state.reload();
+
+  
 };
+
+$scope.LeerCuadrado = function(elegido){
+    
+      $scope.cuadradoElegido = elegido;
+       
+  };
 
 $scope.Cancelar = function(){
   $scope.estado.bandera = "lista";

@@ -18,11 +18,30 @@
     Desafíos de Batalla Naval
   </div>
 
-    <ion-item ng-if="batalla.desafiante!=referencia.nombre && batalla.Aceptante == null " ng-repeat="batalla in batallas" style="width: 50%; text-align: left; margin: auto;">
-        <a class="button button-balanced" ng-click="AcepteDesafio(batalla)">Aceptar</a>
-        {{batalla.desafiante}} apuesta que la nave esta {{batalla.Posicion}} {{batalla.Credito}} Creditos
+    <ion-item ng-if="batalla.desafiante!=referencia.nombre && batalla.aceptante == null " ng-repeat="batalla in batallas" ng-click="GuardarBatalla(batalla)" style="width: 50%; text-align: center; margin: auto;">
+        {{batalla.desafiante}} apostó {{batalla.credito}} Creditos con su nave
     </ion-item>
   </div>
+
+    <ion-list ng-if="estado.bandera=='enjuego'">
+    <div class="input-label" style="width: 50%; text-align: center; margin: auto;">
+    <table style="width: 50%; text-align: center; margin: auto;">
+        <tr>
+            <td ng-click="LeerCuadrado('Primero')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td>
+            <td ng-click="LeerCuadrado('Segundo')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td><tr>
+            <td ng-click="LeerCuadrado('Tercero')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td>
+            <td ng-click="LeerCuadrado('Cuarto')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td></tr>
+        </tr>
+      </table>
+     </ion-list>
+     <div> Sector del barco: {{cuadradoElegido}}</div>
+      <a class="button button-balanced" ng-click="AcepteDesafio()">Aceptar</a>
+      <a class="button button-balanced" ng-click="estado.bandera='lista'">Volver</a>
+        
 
 
   </ion-content>
