@@ -1,6 +1,6 @@
 angular.module('listadesafios.controller', [])
 
-.controller('listaDesafiosCtrl', function($scope, $timeout, sLogueado) {
+.controller('listaDesafiosCtrl', function($scope, $state, $timeout, sLogueado) {
 
 
 	$scope.desafio = {};
@@ -30,7 +30,17 @@ angular.module('listadesafios.controller', [])
     });
 });
 
-
+    refDesafios.on('child_changed', function(data){
+      
+    $timeout(function(){
+      for (var i in $scope.desafios) {
+        if ($scope.desafios[i].key == data.key) {
+          $scope.desafios[i] = data.val();
+          $scope.desafios[i].key = data.key;
+        };
+      };
+    });
+});
     var refBatalla = new firebase.database().ref('partidasBatallaNaval/');
     console.info(refBatalla);
     refBatalla.on('child_added', function(data){
@@ -44,18 +54,15 @@ angular.module('listadesafios.controller', [])
     });
 });
 
-$scope.AceptDesafio = function(){
+$scope.AceptDesafio = function(value){
 
-  
-
+  console.info (value);
+  var refDesafios = new firebase.database().ref('desafios/');
+  refDesafios.child(value.key).update({
+    Aceptante: $scope.referencia.nombre
+  });
 };
 
-$scope.AbrirDesafio = function(){
-  console.info($scope.batalla);  
-  $scope.estado.bandera = "nuevodesafio";
-  console.info($scope.estado.bandera);  
-
-};
 
 $scope.Cancelar = function(){
   $scope.estado.bandera = "lista";

@@ -6,9 +6,9 @@
     Desafíos
   </div>
 
-    <ion-item ng-if="desafio.desafiante!=referencia.nombre" ng-repeat="desafio in desafios" style="width: 50%; text-align: left; margin: auto;">
+    <ion-item ng-if="desafio.desafiante!=referencia.nombre && desafio.Aceptante == null " ng-repeat="desafio in desafios" style="width: 50%; text-align: left; margin: auto;">
         <td></td>
-        <a class="button button-balanced" ng-click="AceptDesafio()">Aceptar</a>
+        <a class="button button-balanced" ng-click="AceptDesafio(desafio)">Aceptar</a>
         <label>{{desafio.desafiante}} apuesta {{desafio.Credito}} Creditos que {{desafio.Descripcion}} 
         </label>
      </ion-item>
@@ -18,29 +18,12 @@
     Desafíos de Batalla Naval
   </div>
 
-    <ion-item ng-if="batalla.desafiante!=referencia.nombre" ng-repeat="batalla in batallas" style="width: 50%; text-align: left; margin: auto;">
+    <ion-item ng-if="batalla.desafiante!=referencia.nombre && desafio.Aceptante == null " ng-repeat="batalla in batallas" style="width: 50%; text-align: left; margin: auto;">
         <a class="button button-balanced" ng-click="AceptDesafio()">Aceptar</a>
         {{batalla.desafiante}} apuesta que la nave esta {{batalla.Posicion}} {{batalla.Credito}} Creditos
     </ion-item>
   </div>
 
-<div ng-show="estado.bandera == 'nuevodesafio'">
-      <div class="item item-divider" style="text-align: center;">
-        Desafío
-      </div>
-      <div class="item">
-        <p>Usuario: {{batalla.desafiante}}</p>
-        <p>Creditos: {{batalla.Credito}}</p>
-        <p>Descripción: {{batalla.Descripcion}}</p>
-      </div>
-
-      <div class="item item-divider" style="text-align: center;">
-        Aceptar desafío
-      </div>
-      <div class="button-bar">
-        <ion-item class="button button-assertive icon ion-close" ng-click="Cancelar()"></ion-item>
-        <ion-item class="button button-balanced icon ion-checkmark" ng-click="Aceptar()"></ion-item></div>
-</div>
 
   </ion-content>
 </ion-view>
