@@ -1,16 +1,17 @@
 angular.module('desafio.controller', [])
 
-.controller('desafioCtrl', function($scope) {
+.controller('desafioCtrl', function($scope, sLogueado) {
 $scope.nueva={};
 $scope.nueva.credito = 0;
 $scope.nueva.desc= "";
 $scope.cantPartidas;
+$scope.referencia = sLogueado.traerUser();
 
 $scope.Apostar = function(){
-
-	alert("llegue");
+console.info(sLogueado.traerUser());
+  console.info($scope.referencia);
   firebase.database().ref("/desafios/").push({
-  desafiante: "Cristian",
+  desafiante: $scope.referencia.nombre,
   Descripcion: $scope.nueva.desc,
   Credito: $scope.nueva.credito
   })

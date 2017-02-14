@@ -1,6 +1,6 @@
 angular.module('listadesafios.controller', [])
 
-.controller('listaDesafiosCtrl', function($scope, $timeout) {
+.controller('listaDesafiosCtrl', function($scope, $timeout, sLogueado) {
 
 
 	$scope.desafio = {};
@@ -14,6 +14,7 @@ angular.module('listadesafios.controller', [])
   $scope.batallas =[];
   $scope.estado = {};
   $scope.estado.bandera = "lista";
+  $scope.referencia = sLogueado.traerUser();
 
 
 	var refDesafios = new firebase.database().ref('desafios/');

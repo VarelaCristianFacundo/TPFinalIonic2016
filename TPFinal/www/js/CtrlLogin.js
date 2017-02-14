@@ -36,7 +36,8 @@ angular.module('login.controller', [])
 
       });
       console.info("login correcto", resultado);
-
+      console.info("login auth", firebase.auth());
+      
     });
   };
 
@@ -98,9 +99,10 @@ $scope.Administrador=function(){
   $scope.Registrar = function (){
     firebase.auth().createUserWithEmailAndPassword($scope.login.usuario, $scope.login.clave).then(function(resultado){
 
-      firebase.database().ref('usuario/' + $scope.login.nombre).set({
+      firebase.database().ref('usuario/' + resultado.uid).set({
         correo: $scope.login.usuario,
-        nombre: $scope.login.nombre
+        nombre: $scope.login.nombre,
+        creditos: 100
       });
 
       $timeout(function() {

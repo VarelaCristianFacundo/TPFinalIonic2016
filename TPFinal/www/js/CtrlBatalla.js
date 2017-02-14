@@ -1,12 +1,15 @@
 angular.module('batalla.controller', [])
 
-.controller('batallanavalCtrl', function($scope) {
+.controller('batallanavalCtrl', function($scope, sLogueado) {
 
 $scope.admin = "Cris";
 $scope.cuadradoElegido="Ninguno";
 $scope.nueva={};
 $scope.nueva.credito = 0;
 $scope.nueva.duracion = 0;
+$scope.referencia = sLogueado.traerUser();
+
+
 
 var partidasRef = new Firebase("https://loginsupervisada.firebaseio.com/partidas");
 partidasRef.on('child_added', function(data){
@@ -20,10 +23,8 @@ $timeout(function(){
 
 $scope.Apostar = function(){
 
-alert ("llegue");
-
- firebase.database().ref("/partidasBatallaNaval/").push({
-  desafiante: "Cristian",
+  firebase.database().ref("/partidasBatallaNaval/").push({
+  desafiante: $scope.referencia.nombre,
   Posicion: $scope.cuadradoElegido,
   Credito: $scope.nueva.credito
   })
