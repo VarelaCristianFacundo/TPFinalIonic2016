@@ -2,19 +2,19 @@
     <ion-content class="col text-center" scroll="false" style="background: url(img/paisaje.jpg) no-repeat center center fixed; background-size: cover;">
     <form>      
       <div class="col text-center" ng-if="logueado == 'no'">
-         <button class="button button-royal" style="width: 200px" ng-click="Administrador()"><i class="ion-android-contact"></i> Administrador</button>
+         <button class="button button-dark" style="width: 200px" ng-click="Administrador()"><i class="ion-android-contact"></i> Administrador</button>
          </div>
          <ion-list  ng-if="logueado == 'no'">
-              <button class="button button-positive" style="width: 120px" ng-click="JugadorUno()"><i class="ion-android-contact"></i> Jugador 1</button>
-                 <button ion-button outline item-right icon-left class="button button-positive" style="width: 120px" ng-click="JugadorDos()"><i class="ion-android-contact"></i> Jugador 2</button>
+              <button class="button button-dark" style="width: 120px" ng-click="JugadorUno()"><i class="ion-android-contact"></i> Jugador 1</button>
+                 <button ion-button outline item-right icon-left class="button button-dark" style="width: 120px" ng-click="JugadorDos()"><i class="ion-android-contact"></i> Jugador 2</button>
           </ion-list>
           <ion-list  ng-if="logueado == 'no'">
         <div class="list " ng-if="logueado == 'no'">
-            <br><br><br><br>
-            <input type="text" placeholder="Nombre" style="background-color: transparent; color: white" ng-model="login.nombre" class="col text-center">
-            <input type="text" placeholder="Correo" style="background-color: transparent; color: white" ng-model="login.usuario" class="col text-center"> 
-            <input type="password" placeholder="Contraseña" style="background-color: transparent; color: white" ng-model="login.clave" class="col text-center">
-
+            <br><br>
+            <input type="text" placeholder="Nombre" style="background-color: transparent; border: 1px black solid; width: 40%; margin: auto; color: black" ng-model="login.nombre" class="col text-center">
+            <input type="text" placeholder="Correo" style="background-color: transparent; border: 1px black solid; width: 40%; margin: auto; color: black" ng-model="login.usuario" class="col text-center"> 
+            <input type="password" placeholder="Contraseña" style="background-color: transparent; border: 1px black solid; width: 40%; margin: auto; color: black" ng-model="login.clave" class="col text-center">
+            <br>
         </div>
         </ion-list>
         <div class="padding" ng-if="logueado == 'no'">
