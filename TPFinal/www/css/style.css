@@ -1,11 +1,11 @@
 /* Empty. Add your own CSS if you like */
 
 input::-webkit-input-placeholder {
-  color: red ;
+  color: black ;
 }
 input:-moz-placeholder {
-  color: red ;
+  color: black ;
 }
 input:-ms-input-placeholder { /* IE10+ */
-  color: red ;
+  color: black ;
 }

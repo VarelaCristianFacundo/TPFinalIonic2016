@@ -1,22 +1,21 @@
 <ion-view view-title="Listado de Desafios">
-  <ion-content>
- 
+  <ion-content class="col text-center" scroll="false" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;">
+  <br><br>
 <div class="list" ng-show="estado.bandera == 'lista'">
-  <div class="item item-divider" style="width: 50%; text-align: center; margin: auto;">
-    Desafíos
-  </div>
-
-    <ion-item ng-if="desafio.desafiante!=referencia.nombre && desafio.aceptante == null " ng-repeat="desafio in desafios" style="width: 50%; text-align: left; margin: auto;">
+     <font face="univers" size="4" color="white"> 
+         Lista de Desafíos 
+    </font>
+    <br><br>
+    <ion-item ng-if="desafio.desafiante!=referencia.nombre && desafio.aceptante == null " ng-repeat="desafio in desafios" style="text-align: left; margin: auto;">
         <td></td>
         <a class="button button-balanced" ng-click="AceptDesafio(desafio)">Aceptar</a>
-        <label>{{desafio.desafiante}} apuesta {{desafio.credito}} Creditos que {{desafio.descripcion}} 
-        </label>
+        <font face="univers" size="1" color="black" >{{desafio.desafiante}} apuesta {{desafio.credito}} Creditos que {{desafio.descripcion}} 
+        </font>
      </ion-item>
-
-
-  <div class="item item-divider" style="width: 50%; text-align: center; margin: auto;">
-    Desafíos de Batalla Naval
-  </div>
+<br><br>
+  <font face="univers" size="4" color="white"> 
+         Lista de Desafíos de Batalla Naval
+    </font>
 
     <ion-item ng-if="batalla.desafiante!=referencia.nombre && batalla.aceptante == null " ng-repeat="batalla in batallas" ng-click="GuardarBatalla(batalla)" style="width: 50%; text-align: center; margin: auto;">
         {{batalla.desafiante}} apostó {{batalla.credito}} Creditos con su nave

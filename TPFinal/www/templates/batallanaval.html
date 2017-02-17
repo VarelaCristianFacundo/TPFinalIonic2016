@@ -1,6 +1,10 @@
 <ion-view view-title="Batalla Naval">
-  <ion-content style="width:50%; text-align: center; margin: auto;">
-    <ion-list>
+     <ion-content class="col text-center" scroll="false" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;"><br>
+     <br>
+     <font face="univers" size="4" color="white"> 
+         Elegir posición del barco: {{cuadradoElegido}} 
+    </font> 
+   <ion-list>
     <div class="input-label" style="width: 50%; text-align: center; margin: auto;">
     <table style="width: 50%; text-align: center; margin: auto;">
         <tr>
@@ -15,7 +19,10 @@
         </tr>
       </table>
      </ion-list>
-     <div> Sector del barco: {{cuadradoElegido}}</div>
+     <br>
+     <font face="univers" size="4" color="white"> 
+         Ingrese el Monto 
+    </font>
 
    <label>
      <span class="input-label" style="width: 100%; text-align: center; margin: auto;"></span>
@@ -27,9 +34,13 @@
     <i class="icon ion-cash balanced"></i>
   </ion-item>
   </label>
-  Cantidad: {{nueva.credito}} Créditos
-
- 
-  <a class="button button-balanced" style="width: 50%; text-align: center; margin: auto;" ng-click="Apostar()"><i class="ion-plus-circled"></i> Apostar</a>
+<br>
+     <font face="univers" size="4" color="white"> 
+         Cantidad: {{nueva.credito}} Créditos 
+    </font>
+   <br><br>
+         <div class="col text-center">
+         <button class="button button-balanced" style="width: 50%; text-align: center; margin: auto;" ng-click="Apostar()"><i class="ion-plus-circled"></i> Apostar</button>
+         </div>
   </ion-content>
 </ion-view>

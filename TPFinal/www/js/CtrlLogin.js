@@ -42,7 +42,7 @@ angular.module('login.controller', [])
   };
 
 $scope.Administrador=function(){
-  $scope.login.usuario = "cvarelagarcia@gmail.com";
+  $scope.login.usuario = "cvarela@iplan.com.ar";
   $scope.login.clave = "123456";
   $scope.login.nombre = "Administrador";
   }

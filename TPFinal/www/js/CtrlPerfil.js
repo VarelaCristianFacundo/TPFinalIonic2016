@@ -1,8 +1,23 @@
 angular.module('perfiluser.controller', [])
 
-.controller('perfiluserCtrl', function($scope, $timeout, $cordovaBarcodeScanner, sLogueado) {
+.controller('perfiluserCtrl', function($scope, $timeout, $state, $cordovaBarcodeScanner, sLogueado) {
 $scope.referencia = sLogueado.traerUser();
 $scope.tarjetas= [];
+
+$scope.Deslogear = function (){
+  $state.go('tab.login');
+    firebase.auth().signOut().catch(function (error){
+      console.info("login incorrecto", error);
+    }).then( function(resultado){
+      $timeout(function() {
+        $scope.logueado = 'no';
+        $scope.usuario = JSON.stringify(resultado);
+        //$scope.usuario = JSON.stringify(firebase.auth().currentUser()); Esto es para usarlo en cualquier lado porque firebase esta global
+      });
+      console.info("deslogueo correcto", resultado);
+      
+    });
+  };
 
   $scope.LeerCodigo = function(){
     $cordovaBarcodeScanner.scan().then ( function (imagenEscaneada){

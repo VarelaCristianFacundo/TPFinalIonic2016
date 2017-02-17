@@ -1,27 +1,31 @@
 <ion-view view-title="Desafio">
-  <ion-content class="padding">
-  <label style="width:50%; text-align: center; margin: auto;">
-     <h3>Ingrese el desafío</h3>
-  </label>
-<ion-item >
-<input type="text" placeholder="Escribir Desafio" ng-model='nueva.desc' style="width:100%; text-align: center; margin: auto;">
-</ion-item>
-
-
-   <label style="width:50%; text-align: center; margin: auto;">
-     <h4>Ingrese el monto</h4>
-  </label>
+    <ion-content class="col text-center" scroll="false" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;"><br>
+  <div>
+    <br>
+  <font face="univers" size="6" color="white"> 
+         Ingrese el desafío 
+ </font>
+</div><br>
+   <input type="text" placeholder="Escribir Desafio.." style="background-color: white; border: 1px black solid; width: 80%; margin: auto; color: black" ng-model='nueva.desc' class="col text-center"><br>
+<br>
+<div>
+   <font face="univers" size="6" color="white"> 
+         Ingrese el Monto
+ </font>
+ </div>
+ <br>
 <ion-item class="range range-balanced">
     <i class="icon ion-cash balanced"></i>
     <input type="range" name="credito" ng-model= "nueva.credito" min="0" max="1000" value="0">
     <i class="icon ion-cash balanced"></i>
   </ion-item>
-  <ion-item>
-  Creditos:{{nueva.credito}}
-</ion-item>
-  <ion-item>
-    <a class="button button-balanced" style="width: 50%; text-align: center; margin: auto;" ng-click="Apostar()"><i class="ion-plus-circled"></i> Apostar</a>
-  </ion-item>
-
+<br>
+   <font face="univers" size="6" color="white"> 
+         Creditos:{{nueva.credito}}
+ </font>
+ <br><br><br>
+         <div class="col text-center">
+         <button class="button button-balanced" style="width: 35%; text-align: center; margin: auto;" ng-click="Apostar()"><i class="ion-plus-circled"></i> Apostar</button>
+         </div>
   </ion-content>
 </ion-view>
