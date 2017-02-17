@@ -1,27 +1,14 @@
 <ion-view view-title="Listado de Desafios">
-  <ion-content>
- 
+     <ion-content class="col text-center" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;"><br>
 <div class="list">
-  <div class="item item-divider">
-    Desafíos
-  </div>
-
-    <ion-item ng-if="desafio.estado != 'finalizado'" ng-repeat="desafio in desafios" style="width: 50%; text-align: left; margin: auto;">
+     <font face="univers" size="4" color="white"> 
+         Lista de Desafíos 
+    </font><br><br> 
+    <ion-item ng-if="desafio.estado != 'finalizado'" ng-repeat="desafio in desafios" style="width: 100%; text-align: left; margin: auto;">
         <td></td>
+        <font face="univers" size="1" color="black" >{{desafio.desafiante}} apuesta {{desafio.credito}} Creditos que {{desafio.descripcion}}<br>
         <a class="button button-balanced" ng-click="Verdadero(desafio)">V</a>
         <a class="button button-assertive" ng-click="Falso(desafio)">F</a>
-        <label>{{desafio.desafiante}} apuesta {{desafio.credito}} Creditos que {{desafio.descripcion}} 
-        </label>
      </ion-item>
-
-<div class="list">
-  <div class="item item-divider">
-    Desafíos de Batalla Naval
-  </div>
-
-    <ion-item ng-repeat="batalla in batallas" ng-click="AbrirDesafio()">
-        {{batalla.desafiante}} apuesta que la nave esta {{batalla.Posicion}} {{batalla.Credito}} Creditos
-     </ion-item>
-
   </ion-content>
 </ion-view>
