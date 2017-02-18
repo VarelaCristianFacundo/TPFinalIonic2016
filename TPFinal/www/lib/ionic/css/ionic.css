@@ -4689,7 +4689,7 @@ a.subdued {
   background-image: none; }
 
 .tabs-striped.tabs-background-dark .tabs {
-  background-color: #444;
+  background-color: #000000;
   background-image: none; }
 
 .tabs-striped.tabs-color-light .tab-item {
@@ -5780,7 +5780,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
     color: #fff; }
   .item.item-dark {
     border-color: #111;
-    background-color: #444;
+    background-color: #000000;
     color: #fff; }
   .item[ng-click]:hover {
     cursor: pointer; }
@@ -8833,7 +8833,7 @@ progress {
         color: #fff; }
   .button.button-dark {
     border-color: transparent;
-    background-color: #444;
+    background-color: #000000;
     color: #fff; }
     .button.button-dark:hover {
       color: #fff;

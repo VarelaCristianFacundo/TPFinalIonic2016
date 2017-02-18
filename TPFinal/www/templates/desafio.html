@@ -6,15 +6,18 @@
          Ingrese el desafío 
  </font>
 </div><br>
-   <input type="text" placeholder="Escribir Desafio.." style="background-color: white; border: 1px black solid; width: 80%; margin: auto; color: black" ng-model='nueva.desc' class="col text-center"><br>
-<br>
+
+   <input type="text" placeholder="Escribir Desafio.." style="background-color: black; border: 1px black solid; width: 80%; margin: auto; color: white" ng-model="nueva.desc" class="col text-center"><br>
+  <br>
+  
+
 <div>
    <font face="univers" size="6" color="white"> 
          Ingrese el Monto
  </font>
  </div>
  <br>
-<ion-item class="range range-balanced">
+<ion-item class="range range-balanced" style="background-color: black">
     <i class="icon ion-cash balanced"></i>
     <input type="range" name="credito" ng-model= "nueva.credito" min="0" max="1000" value="0">
     <i class="icon ion-cash balanced"></i>
@@ -25,7 +28,7 @@
  </font>
  <br><br><br>
          <div class="col text-center">
-         <button class="button button-balanced" style="width: 35%; text-align: center; margin: auto;" ng-click="Apostar()"><i class="ion-plus-circled"></i> Apostar</button>
+         <button class="button button-balanced" style="width: 35%; text-align: center; margin: auto;" ng-click="Apostar()">Apostar <i class="ion-checkmark-round"></i></button>
          </div>
   </ion-content>
 </ion-view>
