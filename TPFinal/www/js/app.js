@@ -11,6 +11,46 @@ angular.module('starter', ['ionic', 'perfiladmin.controller', 'starter.controlle
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+
+firebase.auth().onAuthStateChanged (function(user){
+  if (user)
+  {
+    try{
+        //Configuración inicial cada vez que se inicia la App
+        var push = PushNotification.init({
+          android: {
+            //Es el mismo SENDER ID de siempre y es el único dato obligatorio en el init.
+            senderID: "736952207155"
+          },
+          ios: {},
+          windows: {}
+        });
+
+        //Cuando se registra el ID del usuario
+        push.on('registration', function(data) {
+          console.log("registrationId:" + data.registrationId);
+          console.info("push", push);
+          firebase.database().ref('usuario/'+firebase.auth().currentUser.uid).update({
+              registrationId: data.registrationId
+          });
+        });
+
+        //Cuando le llega una notificación al usuario
+        push.on('notification', function(data) {
+          console.log("Nueva notificacion", data);
+        });
+
+        //Cuando se produce un error
+        push.on('error', function(e) {
+          console.log(e.message);
+        });
+    }
+    catch(error){
+            console.log("La PC no otorga ID de notificaciones.", error);
+    }
+  }
+  });
+
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);

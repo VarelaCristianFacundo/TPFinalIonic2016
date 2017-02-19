@@ -32,8 +32,13 @@ $ionicPlatform.ready(function() {
 
 
   $scope.Logear = function (){
-  window.plugins.NativeAudio.play('click');
-
+  try{
+    window.plugins.NativeAudio.play('click');
+  }
+  catch(err)
+  {
+    console.log(err);
+  }
     firebase.auth().signInWithEmailAndPassword($scope.login.usuario, $scope.login.clave).catch(function (error){
 
       console.info("Error", error);
@@ -78,7 +83,13 @@ $scope.Administrador=function(){
     $scope.login.usuario="cvarela@iplan.com.ar";
     $scope.login.clave = "123456";
     $scope.login.nombre = "Facu";
+    try{
     window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log (err);
+    }
   }
 
   $scope.JugadorDos=function(){

@@ -2,6 +2,12 @@ angular.module('perfiluser.controller', [])
 
 .controller('perfiluserCtrl', function($scope, $timeout, $state, $cordovaBarcodeScanner, sLogueado, $cordovaNativeAudio, $ionicPlatform) {
 
+if (firebase.auth().currentUser == null)
+{
+  console.info ("entre", firebase.auth().currentUser);
+  $state.go ('tab.login');
+}
+
 $ionicPlatform.ready(function() {
       //------------------------------------------ AUDIOS ---------------------------------------------//
       if( window.plugins && window.plugins.NativeAudio ) {
