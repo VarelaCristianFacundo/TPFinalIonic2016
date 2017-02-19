@@ -1,6 +1,26 @@
 angular.module('login.controller', [])
 
-.controller('LoginCtrl', function($scope, $stateParams, $timeout, $state, $cordovaOauth) {
+.controller('LoginCtrl', function($scope, $cordovaNativeAudio, $stateParams, $ionicPlatform, $timeout, $state, $cordovaOauth) {
+
+$ionicPlatform.ready(function() {
+      //------------------------------------------ AUDIOS ---------------------------------------------//
+      if( window.plugins && window.plugins.NativeAudio ) {
+          window.plugins.NativeAudio.preloadSimple( 'click', 'audio/click.mp3', function(msg){
+          }, function(msg){
+              console.log( 'error: ' + msg );
+          });
+          
+        window.plugins.NativeAudio.preloadComplex("cancion", 'audio/cancion.mp3', 1, 1, 0,
+          function(msg) {
+            console.log("Música cargada", msg);
+            window.plugins.NativeAudio.loop("cancion");
+          }, function(msg) {
+            console.log('error: ' + msg);
+          });
+
+      };
+  });
+
   $scope.logueado = 'no';
   $scope.verificado = 'no';
 
@@ -10,7 +30,10 @@ angular.module('login.controller', [])
 
   $scope.login = {};
 
+
   $scope.Logear = function (){
+  window.plugins.NativeAudio.play('click');
+
     firebase.auth().signInWithEmailAndPassword($scope.login.usuario, $scope.login.clave).catch(function (error){
 
       console.info("Error", error);
@@ -37,6 +60,9 @@ angular.module('login.controller', [])
       });
       console.info("login correcto", resultado);
       console.info("login auth", firebase.auth());
+      window.plugins.NativeAudio.stop("cancion");
+      window.plugins.NativeAudio.unload('cancion');
+ 
       
     });
   };
@@ -45,21 +71,25 @@ $scope.Administrador=function(){
   $scope.login.usuario = "cvarela@iplan.com.ar";
   $scope.login.clave = "123456";
   $scope.login.nombre = "Administrador";
+  window.plugins.NativeAudio.play('click');
   }
 
   $scope.JugadorUno=function(){
     $scope.login.usuario="cvarela@iplan.com.ar";
     $scope.login.clave = "123456";
     $scope.login.nombre = "Facu";
+    window.plugins.NativeAudio.play('click');
   }
 
   $scope.JugadorDos=function(){
     $scope.login.usuario="lautaroriveiro91@gmail.com";
     $scope.login.clave = "123456";
     $scope.login.nombre = "Lauta";
+    window.plugins.NativeAudio.play('click');
   }
 
   $scope.Deslogear = function (){
+    window.plugins.NativeAudio.play('click');
     firebase.auth().signOut().catch(function (error){
       console.info("login incorrecto", error);
     }).then( function(resultado){
@@ -73,6 +103,7 @@ $scope.Administrador=function(){
   };
 
   $scope.Resetear = function (){
+    window.plugins.NativeAudio.play('click');
     firebase.auth().sendPasswordResetEmail($scope.login.usuario).then(function(resultado){
       console.info("resertear clave correcto", resultado);
     }).catch(function (error){
@@ -81,6 +112,7 @@ $scope.Administrador=function(){
   };
 
   $scope.VerificarMail = function (){
+    window.plugins.NativeAudio.play('click');
     firebase.auth().currentUser.sendEmailVerification().then(function(resultado){
       console.info("verifico el usuario correcto", resultado);
     }).catch(function (error){
@@ -89,6 +121,7 @@ $scope.Administrador=function(){
   };
 
   $scope.VerificarMail = function (){
+    window.plugins.NativeAudio.play('click');
     firebase.auth().currentUser.sendEmailVerification().then(function(resultado){
       console.info("verifico el usuario correcto", resultado);
     }).catch(function (error){
@@ -97,6 +130,7 @@ $scope.Administrador=function(){
   };
 
   $scope.Registrar = function (){
+    window.plugins.NativeAudio.play('click');
     firebase.auth().createUserWithEmailAndPassword($scope.login.usuario, $scope.login.clave).then(function(resultado){
 
       firebase.database().ref('usuario/' + resultado.uid).set({
@@ -123,6 +157,7 @@ $scope.Administrador=function(){
   };
 
   $scope.LoginGitHub = function (){ 
+    window.plugins.NativeAudio.play('click');
     $cordovaOauth.github("268ca57667d46532b4a0", "ead175145479d458e210f8b2724b11d735476410", []).then(function(result) {
     var token = result.access_token;
     var credential = firebase.auth.GithubAuthProvider.credential(token);

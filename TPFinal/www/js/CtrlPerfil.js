@@ -1,11 +1,23 @@
 angular.module('perfiluser.controller', [])
 
-.controller('perfiluserCtrl', function($scope, $timeout, $state, $cordovaBarcodeScanner, sLogueado) {
+.controller('perfiluserCtrl', function($scope, $timeout, $state, $cordovaBarcodeScanner, sLogueado, $cordovaNativeAudio, $ionicPlatform) {
+
+$ionicPlatform.ready(function() {
+      //------------------------------------------ AUDIOS ---------------------------------------------//
+      if( window.plugins && window.plugins.NativeAudio ) {
+          window.plugins.NativeAudio.preloadSimple( 'coin', 'audio/coin.mp3', function(msg){
+          }, function(msg){
+              console.log( 'error: ' + msg );
+          });
+
+      };
+  });
+
+
 $scope.referencia = sLogueado.traerUser();
 $scope.tarjetas= [];
 
 $scope.Deslogear = function (){
-  $state.go('tab.login');
     firebase.auth().signOut().catch(function (error){
       console.info("login incorrecto", error);
     }).then( function(resultado){
@@ -15,13 +27,15 @@ $scope.Deslogear = function (){
         //$scope.usuario = JSON.stringify(firebase.auth().currentUser()); Esto es para usarlo en cualquier lado porque firebase esta global
       });
       console.info("deslogueo correcto", resultado);
-      
+    $state.go('tab.login');  
     });
+
   };
 
   $scope.LeerCodigo = function(){
-    $cordovaBarcodeScanner.scan().then ( function (imagenEscaneada){
-      alert (imagenEscaneada.text);
+      window.plugins.NativeAudio.play('coin');
+      $cordovaBarcodeScanner.scan().then ( function (imagenEscaneada){
+      alert ("Se acreditaron: " + imagenEscaneada.text + "créditos");
       console.info("imagenEscaneada",imagenEscaneada);
       var refTarjetas = new firebase.database().ref('tarjetas/'+ imagenEscaneada.text);
 

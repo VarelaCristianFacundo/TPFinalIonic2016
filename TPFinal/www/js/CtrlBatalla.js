@@ -1,6 +1,18 @@
 angular.module('batalla.controller', [])
 
-.controller('batallanavalCtrl', function($scope, sLogueado) {
+.controller('batallanavalCtrl', function($scope, sLogueado, $cordovaNativeAudio, $ionicPlatform) {
+
+$ionicPlatform.ready(function() {
+      //------------------------------------------ AUDIOS ---------------------------------------------//
+      if( window.plugins && window.plugins.NativeAudio ) {
+          window.plugins.NativeAudio.preloadSimple( 'coin', 'audio/coin.mp3', function(msg){
+          }, function(msg){
+              console.log( 'error: ' + msg );
+          });
+          
+      };
+  });
+
 
 $scope.admin = "Cris";
 $scope.cuadradoElegido="Ninguno";
@@ -22,15 +34,37 @@ $timeout(function(){
  });
 
 $scope.Apostar = function(){
-  $scope.referencia.creditos = $scope.referencia.creditos - $scope.nueva.credito;
-  sLogueado.actualizarCreditos ($scope.referencia.creditos);
 
-  firebase.database().ref("/partidasBatallaNaval/").push({
-  desafiante: $scope.referencia.nombre,
-  posicion: $scope.cuadradoElegido,
-  desafianteUID: firebase.auth().currentUser.uid,
-  credito: $scope.nueva.credito
-  })
+  if ($scope.cuadradoElegido == "Ninguno")
+  {
+      alert ("No eligió posición de la nave");
+  }
+  else if ($scope.nueva.credito == 0)
+  {
+      alert ("No ingresó créditos");    
+  }
+  else
+  {
+    if ($scope.referencia.creditos < 0)
+    {
+      alert ("No tiene crédito suficiente (Créditos: " + $scope.referencia.creditos + ")")
+    }
+    else
+    {
+    window.plugins.NativeAudio.play('coin');
+    $scope.nueva.credito = 0;
+    $scope.cuadradoElegido = "Ninguno";
+    $scope.referencia.creditos = $scope.referencia.creditos - $scope.nueva.credito;
+    sLogueado.actualizarCreditos ($scope.referencia.creditos);
+
+    firebase.database().ref("/partidasBatallaNaval/").push({
+    desafiante: $scope.referencia.nombre,
+    posicion: $scope.cuadradoElegido,
+    desafianteUID: firebase.auth().currentUser.uid,
+    credito: $scope.nueva.credito
+    })
+    }
+  }
 };
 
 

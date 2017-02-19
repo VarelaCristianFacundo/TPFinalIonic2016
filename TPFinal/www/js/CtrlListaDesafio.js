@@ -1,6 +1,17 @@
 angular.module('listadesafios.controller', [])
 
-.controller('listaDesafiosCtrl', function($scope, $state, $timeout, sLogueado) {
+.controller('listaDesafiosCtrl', function($scope, $state, $timeout, sLogueado, $cordovaNativeAudio, $ionicPlatform) {
+
+$ionicPlatform.ready(function() {
+      //------------------------------------------ AUDIOS ---------------------------------------------//
+      if( window.plugins && window.plugins.NativeAudio ) {
+          window.plugins.NativeAudio.preloadSimple( 'click', 'audio/click.mp3', function(msg){
+          }, function(msg){
+              console.log( 'error: ' + msg );
+          });
+          
+      };
+  });
 
 
 	$scope.desafio = {};
@@ -68,10 +79,11 @@ angular.module('listadesafios.controller', [])
 });
 
 $scope.AceptDesafio = function(value){
-
   console.info (value);
   if (value.credito <= $scope.referencia.creditos)
   {
+
+    window.plugins.NativeAudio.play('click');
     $scope.referencia.creditos = $scope.referencia.creditos - value.credito;
     sLogueado.actualizarCreditos ($scope.referencia.creditos);
     var refDesafios = new firebase.database().ref('desafios/');
