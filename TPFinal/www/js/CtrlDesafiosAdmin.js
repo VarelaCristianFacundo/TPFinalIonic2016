@@ -1,6 +1,13 @@
 angular.module('desafiosadmin.controller', [])
 
-.controller('desafiosadminCtrl', function($scope, $state, $timeout, sLogueado) {
+.controller('desafiosadminCtrl', function($scope, $state, $timeout, sLogueado, $http) {
+
+  var idusuarios = [];
+
+  firebase.database().ref('usuario').on('child_added', function(data){
+   idusuarios.push(data.val().registrationId);
+   console.info ("idusuarios",idusuarios);
+  });
 
 
 	$scope.desafio = {};
@@ -55,6 +62,7 @@ angular.module('desafiosadmin.controller', [])
 });
 
 $scope.Verdadero = function(value){
+
   console.info (value);
   
   var partidasRef = new Firebase("https://loginsupervisada.firebaseio.com/usuario/" + value.desafianteUID);
@@ -63,10 +71,32 @@ $scope.Verdadero = function(value){
 
   usuario.creditos = usuario.creditos + (value.credito * 2);
   partidasRef.update({creditos:usuario.creditos});
+ 
+         $http ({
+
+        method: 'POST',
+        url: 'https://fcm.googleapis.com/fcm/send',
+        headers: {
+          'Authorization': 'key=AAAAq5XGRzM:APA91bGYBgkr1jYlMbtrWm5AEgVtuYg2X5r8l2Qy2o6HtVI2n_VY6_RfAMDm527xVT33N5JuOQF8dfnXGApqV92Z0kbAb3mWiIH0pugiWGrPgXyHBs0fCuICKeYlXs9iNJBorXxuAuJO',
+          'Content-type': 'application/json'
+        },
+        data: {
+          "registration_ids": idusuarios,
+          "notification":{
+            "title": "DesafíoS",
+            "body": usuario.nombre + " ha ganado el desafío",
+            "sound": "default",
+            "click_action": "FCM_PLUGIN_ACTIVITY",
+            "icon": "fcm_push_icon"
+          },
+          "priority":"high"
+        }
+      }).then(function(data){console.info("data",data);}, function(error){console.info("error",error);});
+
+
+
  });
 
-
-  $scope.referencia.creditos = $scope.referencia.creditos + (value.Credito * 2);
 
   var refDesafios = new firebase.database().ref('desafios/');
   refDesafios.child(value.key).update({
@@ -80,13 +110,34 @@ $scope.Falso = function(value){
   var partidasRef = new Firebase("https://loginsupervisada.firebaseio.com/usuario/" + value.aceptanteUID);
   partidasRef.once('value', function(data){
   var usuario = data.val();
-
   usuario.creditos = usuario.creditos + (value.credito * 2);
   partidasRef.update({creditos:usuario.creditos});
+
+
+   $http ({
+
+        method: 'POST',
+        url: 'https://fcm.googleapis.com/fcm/send',
+        headers: {
+          'Authorization': 'key=AAAAq5XGRzM:APA91bGYBgkr1jYlMbtrWm5AEgVtuYg2X5r8l2Qy2o6HtVI2n_VY6_RfAMDm527xVT33N5JuOQF8dfnXGApqV92Z0kbAb3mWiIH0pugiWGrPgXyHBs0fCuICKeYlXs9iNJBorXxuAuJO',
+          'Content-type': 'application/json'
+        },
+        data: {
+          "registration_ids": idusuarios,
+          "notification":{
+            "title": "DesafíoS",
+            "body": usuario.nombre + " ha ganado el desafío",
+            "sound": "default",
+            "click_action": "FCM_PLUGIN_ACTIVITY",
+            "icon": "fcm_push_icon"
+          },
+          "priority":"high"
+        }
+      }).then(function(data){console.info("data",data);}, function(error){console.info("error",error);});
+
+
  });
 
-
-  $scope.referencia.creditos = $scope.referencia.creditos + (value.Credito * 2);
 
   var refDesafios = new firebase.database().ref('desafios/');
   refDesafios.child(value.key).update({

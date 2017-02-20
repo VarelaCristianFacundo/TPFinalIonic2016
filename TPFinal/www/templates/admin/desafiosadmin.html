@@ -4,7 +4,7 @@
      <font face="univers" size="4" color="white"> 
          Lista de Desafíos 
     </font><br><br> 
-    <ion-item ng-if="desafio.estado != 'finalizado'" ng-repeat="desafio in desafios" style="text-center: left; margin: auto; background : black">
+    <ion-item ng-if="desafio.estado != 'finalizado' && desafio.aceptanteUID != null" ng-repeat="desafio in desafios" style="text-center: left; margin: auto; background : black">
         <td></td>
         <font face="univers" size="2" color="white" >{{desafio.desafiante}} apuesta {{desafio.credito}} Creditos que {{desafio.descripcion}}<br>
         <a class="button button-balanced" ng-click="Verdadero(desafio)">V</a>

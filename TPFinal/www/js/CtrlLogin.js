@@ -65,7 +65,7 @@ $ionicPlatform.ready(function() {
       });
       console.info("login correcto", resultado);
       console.info("login auth", firebase.auth());
-      
+
       try{
         window.plugins.NativeAudio.stop("cancion");
         window.plugins.NativeAudio.unload('cancion');
@@ -120,7 +120,13 @@ $scope.Administrador=function(){
   }
 
   $scope.Deslogear = function (){
-    window.plugins.NativeAudio.play('click');
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
     firebase.auth().signOut().catch(function (error){
       console.info("login incorrecto", error);
     }).then( function(resultado){
@@ -134,7 +140,13 @@ $scope.Administrador=function(){
   };
 
   $scope.Resetear = function (){
-    window.plugins.NativeAudio.play('click');
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
     firebase.auth().sendPasswordResetEmail($scope.login.usuario).then(function(resultado){
       console.info("resertear clave correcto", resultado);
     }).catch(function (error){
@@ -143,7 +155,13 @@ $scope.Administrador=function(){
   };
 
   $scope.VerificarMail = function (){
-    window.plugins.NativeAudio.play('click');
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
     firebase.auth().currentUser.sendEmailVerification().then(function(resultado){
       console.info("verifico el usuario correcto", resultado);
     }).catch(function (error){
@@ -152,7 +170,13 @@ $scope.Administrador=function(){
   };
 
   $scope.VerificarMail = function (){
-    window.plugins.NativeAudio.play('click');
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
     firebase.auth().currentUser.sendEmailVerification().then(function(resultado){
       console.info("verifico el usuario correcto", resultado);
     }).catch(function (error){
@@ -161,7 +185,13 @@ $scope.Administrador=function(){
   };
 
   $scope.Registrar = function (){
-    window.plugins.NativeAudio.play('click');
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
     firebase.auth().createUserWithEmailAndPassword($scope.login.usuario, $scope.login.clave).then(function(resultado){
 
       firebase.database().ref('usuario/' + resultado.uid).set({
@@ -188,7 +218,13 @@ $scope.Administrador=function(){
   };
 
   $scope.LoginGitHub = function (){ 
-    window.plugins.NativeAudio.play('click');
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
     $cordovaOauth.github("268ca57667d46532b4a0", "ead175145479d458e210f8b2724b11d735476410", []).then(function(result) {
     var token = result.access_token;
     var credential = firebase.auth.GithubAuthProvider.credential(token);
