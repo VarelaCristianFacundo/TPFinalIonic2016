@@ -39,7 +39,13 @@ $scope.Deslogear = function (){
   };
 
   $scope.LeerCodigo = function(){
+      try{
       window.plugins.NativeAudio.play('coin');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
       $cordovaBarcodeScanner.scan().then ( function (imagenEscaneada){
       alert ("Se acreditaron: " + imagenEscaneada.text + "créditos");
       console.info("imagenEscaneada",imagenEscaneada);
