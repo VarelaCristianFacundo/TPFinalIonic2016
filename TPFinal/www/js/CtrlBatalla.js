@@ -51,8 +51,13 @@ $scope.Apostar = function(){
     }
     else
     {
-    window.plugins.NativeAudio.play('coin');
-    $scope.nueva.credito = 0;
+    try{
+      window.plugins.NativeAudio.play('coin');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }    
     $scope.cuadradoElegido = "Ninguno";
     $scope.referencia.creditos = $scope.referencia.creditos - $scope.nueva.credito;
     sLogueado.actualizarCreditos ($scope.referencia.creditos);
@@ -64,6 +69,7 @@ $scope.Apostar = function(){
     credito: $scope.nueva.credito
     })
     }
+    $scope.nueva.credito = 0;
   }
 };
 

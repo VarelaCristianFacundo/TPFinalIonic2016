@@ -37,7 +37,7 @@ $ionicPlatform.ready(function() {
   }
   catch(err)
   {
-    console.log(err);
+    console.log("NativeAudio no funciona por WEB");
   }
     firebase.auth().signInWithEmailAndPassword($scope.login.usuario, $scope.login.clave).catch(function (error){
 
@@ -65,8 +65,15 @@ $ionicPlatform.ready(function() {
       });
       console.info("login correcto", resultado);
       console.info("login auth", firebase.auth());
-      window.plugins.NativeAudio.stop("cancion");
-      window.plugins.NativeAudio.unload('cancion');
+      
+      try{
+        window.plugins.NativeAudio.stop("cancion");
+        window.plugins.NativeAudio.unload('cancion');
+      }
+      catch(err)
+      {
+        console.log("NativeAudio no funciona por WEB");
+      }
  
       
     });
@@ -76,7 +83,14 @@ $scope.Administrador=function(){
   $scope.login.usuario = "cvarela@iplan.com.ar";
   $scope.login.clave = "123456";
   $scope.login.nombre = "Administrador";
-  window.plugins.NativeAudio.play('click');
+
+  try{
+      window.plugins.NativeAudio.play('click');
+    }
+  catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
   }
 
   $scope.JugadorUno=function(){
@@ -84,11 +98,11 @@ $scope.Administrador=function(){
     $scope.login.clave = "123456";
     $scope.login.nombre = "Facu";
     try{
-    window.plugins.NativeAudio.play('click');
+      window.plugins.NativeAudio.play('click');
     }
     catch(err)
     {
-      console.log (err);
+      console.log("NativeAudio no funciona por WEB");
     }
   }
 
@@ -96,7 +110,13 @@ $scope.Administrador=function(){
     $scope.login.usuario="lautaroriveiro91@gmail.com";
     $scope.login.clave = "123456";
     $scope.login.nombre = "Lauta";
-    window.plugins.NativeAudio.play('click');
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+  catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
   }
 
   $scope.Deslogear = function (){

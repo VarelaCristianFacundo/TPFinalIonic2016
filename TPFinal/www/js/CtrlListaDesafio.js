@@ -83,7 +83,13 @@ $scope.AceptDesafio = function(value){
   if (value.credito <= $scope.referencia.creditos)
   {
 
-    window.plugins.NativeAudio.play('click');
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
     $scope.referencia.creditos = $scope.referencia.creditos - value.credito;
     sLogueado.actualizarCreditos ($scope.referencia.creditos);
     var refDesafios = new firebase.database().ref('desafios/');

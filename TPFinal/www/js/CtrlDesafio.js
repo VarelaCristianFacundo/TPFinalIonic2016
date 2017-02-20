@@ -59,7 +59,13 @@ $scope.Apostar = function(){
     }
     else
     {
-  	  window.plugins.NativeAudio.play('coin');
+  	  try{
+      window.plugins.NativeAudio.play('coin');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
   	  
       $http ({
 
