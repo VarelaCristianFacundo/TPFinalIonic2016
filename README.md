@@ -1,7 +1,7 @@
 ## TPFinalIonic2016
 juego online, Generador de desafíos / batalla naval
 
-![picture alt](resources/android/icon.png "DesafíoS")
+![picture alt](TPFinal/resources/android/icon.png "DesafíoS")
 ### Administrador: Cristian Facundo Varela
 
 ### URL de Firebase:
