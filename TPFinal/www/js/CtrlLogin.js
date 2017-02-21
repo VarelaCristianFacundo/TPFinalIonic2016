@@ -1,6 +1,7 @@
 angular.module('login.controller', [])
 
-.controller('LoginCtrl', function($scope, $cordovaNativeAudio, $stateParams, $ionicPlatform, $timeout, $state, $cordovaOauth) {
+.controller('LoginCtrl', function($scope, $cordovaNativeAudio, $stateParams, $ionicPlatform, $timeout, $state, $cordovaOauth, $ionicPopup) {
+
 
 $ionicPlatform.ready(function() {
       //------------------------------------------ AUDIOS ---------------------------------------------//
@@ -39,24 +40,44 @@ $ionicPlatform.ready(function() {
   {
     console.log("NativeAudio no funciona por WEB");
   }
+  if ($scope.login.nombre == null || $scope.login.usuario == null || $scope.login.clave == null)
+  {
+    var alertPopup = $ionicPopup.alert({
+            title: 'Atención!',
+            template: 'Hay campos sin completar'
+         });
+  }
+  else
+  {
     firebase.auth().signInWithEmailAndPassword($scope.login.usuario, $scope.login.clave).catch(function (error){
 
       console.info("Error", error);
+      var alertPopup = $ionicPopup.alert({
+            title: 'Atención!',
+            template: 'Hay campos incorrectos'
+         });
     }).then( function(resultado){
 
       $timeout(function() {
-        $scope.logueado = 'si';
         if (resultado.emailVerified == false)
+        {
           $scope.verificado = 'si';
+          var alertPopup = $ionicPopup.alert({
+            title: 'Atención!',
+            template: 'Su E-mail no está verificado'
+         });
+        }
         else
         {
           $scope.verificado = 'no';
           if ($scope.login.nombre == "Administrador")
           {
+            $scope.logueado = 'si';
             $state.go('tab2.perfil');
           }
           else
           {
+            $scope.logueado = 'si';
             $state.go('tab.desafio');
           }
         }
@@ -76,7 +97,8 @@ $ionicPlatform.ready(function() {
       }
  
       
-    });
+      });
+    }
   };
 
 $scope.Administrador=function(){
@@ -164,21 +186,10 @@ $scope.Administrador=function(){
     }
     firebase.auth().currentUser.sendEmailVerification().then(function(resultado){
       console.info("verifico el usuario correcto", resultado);
-    }).catch(function (error){
-      console.info("verifico el usuario incorrecto", error);
-    });
-  };
-
-  $scope.VerificarMail = function (){
-    try{
-      window.plugins.NativeAudio.play('click');
-    }
-    catch(err)
-    {
-      console.log("NativeAudio no funciona por WEB");
-    }
-    firebase.auth().currentUser.sendEmailVerification().then(function(resultado){
-      console.info("verifico el usuario correcto", resultado);
+      var alertPopup = $ionicPopup.alert({
+            title: 'Atención!',
+            template: 'Se envió la confirmación del E-mail'
+         });
     }).catch(function (error){
       console.info("verifico el usuario incorrecto", error);
     });

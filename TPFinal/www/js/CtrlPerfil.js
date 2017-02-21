@@ -1,12 +1,7 @@
 angular.module('perfiluser.controller', [])
 
-.controller('perfiluserCtrl', function($scope, $timeout, $state, $cordovaBarcodeScanner, sLogueado, $cordovaNativeAudio, $ionicPlatform) {
+.controller('perfiluserCtrl', function($scope, $timeout, $state, $cordovaBarcodeScanner, sLogueado, $cordovaNativeAudio, $ionicPlatform, $ionicPopup) {
 
-if (firebase.auth().currentUser == null)
-{
-  console.info ("entre", firebase.auth().currentUser);
-  $state.go ('tab.login');
-}
 
 $ionicPlatform.ready(function() {
       //------------------------------------------ AUDIOS ---------------------------------------------//
@@ -15,11 +10,6 @@ $ionicPlatform.ready(function() {
           }, function(msg){
               console.log( 'error: ' + msg );
           });
-          window.plugins.NativeAudio.preloadSimple( 'click', 'audio/click.mp3', function(msg){
-          }, function(msg){
-              console.log( 'error: ' + msg );
-          });
-
       };
   });
 
@@ -28,13 +18,6 @@ $scope.referencia = sLogueado.traerUser();
 $scope.tarjetas= [];
 
 $scope.Deslogear = function (){
-    try{
-      window.plugins.NativeAudio.play('click');
-    }
-    catch(err)
-    {
-      console.log("NativeAudio no funciona por WEB");
-    }
     firebase.auth().signOut().catch(function (error){
       console.info("login incorrecto", error);
     }).then( function(resultado){
@@ -58,15 +41,20 @@ $scope.Deslogear = function (){
       console.log("NativeAudio no funciona por WEB");
     }
       $cordovaBarcodeScanner.scan().then ( function (imagenEscaneada){
-      alert ("Se acreditaron: " + imagenEscaneada.text + "créditos");
       console.info("imagenEscaneada",imagenEscaneada);
       var refTarjetas = new firebase.database().ref('tarjetas/'+ imagenEscaneada.text);
-
+      console.info("refTarjetas", refTarjetas);
       refTarjetas.on('child_added', function(data){
 
       $timeout(function(){
       if (data.key == "cantidad") {
+        console.info("datakey", data.val());
+        var alertPopup = $ionicPopup.alert({
+            title: 'Gracias!',
+            template: 'Se acreditaron $' + data.val()
+         });  
         $scope.referencia.creditos += data.val();
+        sLogueado.actualizarCreditos ($scope.referencia.creditos);
       };
     });
 });

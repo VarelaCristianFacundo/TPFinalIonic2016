@@ -65,7 +65,12 @@ $scope.Apostar = function(){
     {
       console.log("NativeAudio no funciona por WEB");
     }
-  	  
+  	 
+     var alertPopup = $ionicPopup.alert({
+            title: 'Gracias!',
+            template: 'Apostó $' + $scope.nueva.credito + ' que: ' + $scope.nueva.desc
+         });
+
       $http ({
 
         method: 'POST',
