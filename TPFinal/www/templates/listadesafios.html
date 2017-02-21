@@ -1,6 +1,6 @@
 <ion-view view-title="Listado de Desafios">
   <ion-content class="col text-center" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;">
-  <br><br>
+  <br>
 <div class="list" ng-show="estado.bandera == 'lista'">
      <font face="univers" size="4" color="white"> 
          Lista de Desafíos 
@@ -13,11 +13,11 @@
         <br>
         <a class="button button-balanced" ng-click="AceptDesafio(desafio)">Aceptar Desafío (${{desafio.credito}})</a>
      </ion-item>
-<br><br>
+<br>
   <font face="univers" size="4" color="white"> 
          Lista de Desafíos de Batalla Naval
     </font>
-
+    <br><br>
     <ion-item ng-if="batalla.desafiante!=referencia.nombre && batalla.aceptante == null " ng-repeat="batalla in batallas" ng-click="GuardarBatalla(batalla)" style="text-center: left; margin: auto; background : black">
         <font face="univers" size="2" color="white" >{{batalla.desafiante}} apostó {{batalla.credito}} Creditos con su nave</font>
         <br>

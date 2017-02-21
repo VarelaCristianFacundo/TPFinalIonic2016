@@ -1,6 +1,6 @@
 angular.module('batalla.controller', [])
 
-.controller('batallanavalCtrl', function($scope, sLogueado, $cordovaNativeAudio, $ionicPlatform) {
+.controller('batallanavalCtrl', function($scope, sLogueado, $ionicPopup, $cordovaNativeAudio, $ionicPlatform) {
 
 $ionicPlatform.ready(function() {
       //------------------------------------------ AUDIOS ---------------------------------------------//
@@ -37,17 +37,26 @@ $scope.Apostar = function(){
 
   if ($scope.cuadradoElegido == "Ninguno")
   {
-      alert ("No eligió posición de la nave");
+      var alertPopup = $ionicPopup.alert({
+           title: 'Faltan Datos!',
+           template: 'No eligió posición de la nave'
+         });
   }
   else if ($scope.nueva.credito == 0)
   {
-      alert ("No ingresó créditos");    
+    var alertPopup = $ionicPopup.alert({
+           title: 'Faltan Datos!',
+           template: 'No ingresó créditos'
+         });    
   }
   else
   {
-    if ($scope.referencia.creditos < 0)
+    if ($scope.referencia.creditos < $scope.nueva.credito)
     {
-      alert ("No tiene crédito suficiente (Créditos: " + $scope.referencia.creditos + ")")
+      var alertPopup = $ionicPopup.alert({
+           title: 'Faltan Datos!',
+           template: 'No tiene crédito suficiente ($ ' + $scope.referencia.creditos + ')'
+         });
     }
     else
     {
@@ -58,7 +67,6 @@ $scope.Apostar = function(){
     {
       console.log("NativeAudio no funciona por WEB");
     }    
-    $scope.cuadradoElegido = "Ninguno";
     $scope.referencia.creditos = $scope.referencia.creditos - $scope.nueva.credito;
     sLogueado.actualizarCreditos ($scope.referencia.creditos);
 
@@ -70,6 +78,7 @@ $scope.Apostar = function(){
     })
     }
     $scope.nueva.credito = 0;
+    $scope.cuadradoElegido = "Ninguno";
   }
 };
 

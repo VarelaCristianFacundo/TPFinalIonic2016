@@ -1,6 +1,6 @@
 angular.module('listadesafios.controller', [])
 
-.controller('listaDesafiosCtrl', function($scope, $state, $timeout, sLogueado, $cordovaNativeAudio, $ionicPlatform) {
+.controller('listaDesafiosCtrl', function($scope, $state, $timeout, sLogueado, $cordovaNativeAudio, $ionicPlatform, $ionicPopup) {
 
 $ionicPlatform.ready(function() {
       //------------------------------------------ AUDIOS ---------------------------------------------//
@@ -9,7 +9,14 @@ $ionicPlatform.ready(function() {
           }, function(msg){
               console.log( 'error: ' + msg );
           });
-          
+          window.plugins.NativeAudio.preloadSimple( 'victoria', 'audio/victoria.mp3', function(msg){
+          }, function(msg){
+              console.log( 'error: ' + msg );
+          });
+          window.plugins.NativeAudio.preloadSimple( 'derrota', 'audio/derrota.mp3', function(msg){
+          }, function(msg){
+              console.log( 'error: ' + msg );
+          });
       };
   });
 
@@ -101,23 +108,36 @@ $scope.AceptDesafio = function(value){
   }
   else
   {
-    console.info ("Credito insuficiente");
+      var alertPopup = $ionicPopup.alert({
+           title: 'Faltan Datos!',
+           template: 'No tiene crédito suficiente ($ ' + $scope.referencia.creditos + ')'
+         });
+    
   }
 };
 
 $scope.GuardarBatalla = function(value){
-    $scope.estado.bandera="enjuego";
 
-    $scope.detalleBatalla = value;
-    console.info("detalle", $scope.detalleBatalla);
-}
-
-$scope.AcepteDesafio = function(){
+  $scope.detalleBatalla = value;
   console.info("credito batalla", $scope.detalleBatalla.credito);
   console.info("credito referencia", $scope.referencia.creditos);
 
   if (parseInt($scope.detalleBatalla.credito) <= parseInt($scope.referencia.creditos))
   {
+    $scope.estado.bandera="enjuego";
+    console.info("detalle", $scope.detalleBatalla);
+  }
+  else
+  {
+    var alertPopup = $ionicPopup.alert({
+           title: 'Faltan Datos!',
+           template: 'No tiene crédito suficiente ($ ' + $scope.referencia.creditos + ')'
+         });
+    
+  }
+}
+
+$scope.AcepteDesafio = function(){
 
     $scope.estado.bandera="lista";
     var refDesafios = new firebase.database().ref('partidasBatallaNaval/');
@@ -129,6 +149,17 @@ $scope.AcepteDesafio = function(){
       {
             $scope.referencia.creditos = parseInt($scope.referencia.creditos) + parseInt($scope.detalleBatalla.credito);
             sLogueado.actualizarCreditos ($scope.referencia.creditos);
+            try{
+              window.plugins.NativeAudio.play('victoria');
+            }
+            catch(err)
+            {
+              console.log("NativeAudio no funciona por WEB");
+            }
+            var alertPopup = $ionicPopup.alert({
+            title: 'Felicitaciones!',
+            template: 'Has hundido el barco de ' + $scope.detalleBatalla.desafiante
+         });
       }
       else
       {
@@ -139,12 +170,19 @@ $scope.AcepteDesafio = function(){
               usuario.creditos = usuario.creditos + ($scope.detalleBatalla.credito * 2);
               partidasRef.update({creditos:usuario.creditos});
               });
+              try{
+                window.plugins.NativeAudio.play('derrota');
+              }
+              catch(err)
+              {
+                console.log("NativeAudio no funciona por WEB");
+              }
+              var alertPopup = $ionicPopup.alert({
+              title: 'Lo siento!',
+              template: 'Has fallado. El barco de ' + $scope.detalleBatalla.desafiante + ' se ha escapado'
+              });
       }
-  }
-  else
-  {
-    console.info ("Credito insuficiente");
-  }
+  
   $state.reload();
 
   

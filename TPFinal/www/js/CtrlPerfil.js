@@ -15,6 +15,10 @@ $ionicPlatform.ready(function() {
           }, function(msg){
               console.log( 'error: ' + msg );
           });
+          window.plugins.NativeAudio.preloadSimple( 'click', 'audio/click.mp3', function(msg){
+          }, function(msg){
+              console.log( 'error: ' + msg );
+          });
 
       };
   });
@@ -24,6 +28,13 @@ $scope.referencia = sLogueado.traerUser();
 $scope.tarjetas= [];
 
 $scope.Deslogear = function (){
+    try{
+      window.plugins.NativeAudio.play('click');
+    }
+    catch(err)
+    {
+      console.log("NativeAudio no funciona por WEB");
+    }
     firebase.auth().signOut().catch(function (error){
       console.info("login incorrecto", error);
     }).then( function(resultado){
@@ -39,7 +50,7 @@ $scope.Deslogear = function (){
   };
 
   $scope.LeerCodigo = function(){
-      try{
+    try{
       window.plugins.NativeAudio.play('coin');
     }
     catch(err)

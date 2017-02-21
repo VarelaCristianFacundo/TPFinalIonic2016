@@ -211,7 +211,7 @@ $scope.Administrador=function(){
       console.info("registrar el usuario correcto", resultado);
     },function (error){
       if(error.code == "auth/email-already-in-use")
-        $scope.errorMensaje = "El email ya esta registrado";
+        alert("El email ya esta registrado");
 
       console.info("registrar el usuario incorrecto", error);
     });

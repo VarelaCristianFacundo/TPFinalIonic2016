@@ -49,13 +49,12 @@ $scope.Apostar = function(){
   }
   else
   {
-    if ($scope.referencia.creditos < 0)
+    if ($scope.referencia.creditos < $scope.nueva.credito)
     {
-      //alert ("No tiene crédito suficiente (Créditos: " + $scope.referencia.creditos + ")")
       var alertPopup = $ionicPopup.alert({
            title: 'Faltan Datos!',
-           template: "No tiene crédito suficiente (Créditos: " + $scope.referencia.creditos + ")"
-         });      
+           template: 'No tiene crédito suficiente ($ ' + $scope.referencia.creditos + ')'
+         });
     }
     else
     {
