@@ -10,8 +10,11 @@ $ionicPlatform.ready(function() {
           }, function(msg){
               console.log( 'error: ' + msg );
           });
-          
-        window.plugins.NativeAudio.preloadComplex("cancion", 'audio/cancion.mp3', 1, 1, 0,
+          window.plugins.NativeAudio.preloadSimple( 'puerta', 'audio/puerta.mp3', function(msg){
+          }, function(msg){
+              console.log( 'error: ' + msg );
+          });
+          window.plugins.NativeAudio.preloadComplex("cancion", 'audio/cancion.mp3', 1, 1, 0,
           function(msg) {
             console.log("Música cargada", msg);
             window.plugins.NativeAudio.loop("cancion");
@@ -30,7 +33,7 @@ $ionicPlatform.ready(function() {
 
 
   $scope.login = {};
-
+  
 
   $scope.Logear = function (){
   try{
@@ -69,6 +72,13 @@ $ionicPlatform.ready(function() {
         }
         else
         {
+          try{
+          window.plugins.NativeAudio.play('puerta');
+          }
+          catch(err)
+          {
+            console.log("NativeAudio no funciona por WEB");
+          }
           $scope.verificado = 'no';
           if ($scope.login.nombre == "Administrador")
           {
@@ -222,8 +232,12 @@ $scope.Administrador=function(){
       console.info("registrar el usuario correcto", resultado);
     },function (error){
       if(error.code == "auth/email-already-in-use")
-        alert("El email ya esta registrado");
-
+      {
+        var alertPopup = $ionicPopup.alert({
+            title: 'Error!',
+            template: 'El email ya esta registrado'
+         });
+      }
       console.info("registrar el usuario incorrecto", error);
     });
   };

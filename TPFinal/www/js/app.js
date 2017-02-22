@@ -63,6 +63,10 @@ firebase.auth().onAuthStateChanged (function(user){
   });
 })
 
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(0);
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
