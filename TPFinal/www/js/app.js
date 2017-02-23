@@ -99,7 +99,7 @@ firebase.auth().onAuthStateChanged (function(user){
     }
   })
 
-  .state('tab.login', {
+  .state('tab.login', { 
     url: '/login',
     views: {
       'tab-chats': {

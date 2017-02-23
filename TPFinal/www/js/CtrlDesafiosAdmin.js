@@ -81,7 +81,7 @@ $scope.Verdadero = function(value){
           'Content-type': 'application/json'
         },
         data: {
-          "registration_ids": idusuarios,
+          "to": usuario.registrationId,
           "notification":{
             "title": "DesafíoS",
             "body": usuario.nombre + " ha ganado el desafío",
@@ -97,6 +97,35 @@ $scope.Verdadero = function(value){
 
  });
 
+var partidasReface = new Firebase("https://loginsupervisada.firebaseio.com/usuario/" + value.aceptanteUID);
+  partidasReface.once('value', function(data){
+  var usuarioace = data.val();
+
+ 
+         $http ({
+
+        method: 'POST',
+        url: 'https://fcm.googleapis.com/fcm/send',
+        headers: {
+          'Authorization': 'key=AAAAq5XGRzM:APA91bGYBgkr1jYlMbtrWm5AEgVtuYg2X5r8l2Qy2o6HtVI2n_VY6_RfAMDm527xVT33N5JuOQF8dfnXGApqV92Z0kbAb3mWiIH0pugiWGrPgXyHBs0fCuICKeYlXs9iNJBorXxuAuJO',
+          'Content-type': 'application/json'
+        },
+        data: {
+          "to": usuarioace.registrationId,
+          "notification":{
+            "title": "DesafíoS",
+            "body": usuarioace.nombre + " ha perdido el desafío",
+            "sound": "default",
+            "click_action": "FCM_PLUGIN_ACTIVITY",
+            "icon": "fcm_push_icon"
+          },
+          "priority":"high"
+        }
+      }).then(function(data){console.info("data",data);}, function(error){console.info("error",error);});
+
+
+
+ });
 
   var refDesafios = new firebase.database().ref('desafios/');
   refDesafios.child(value.key).update({
@@ -123,7 +152,7 @@ $scope.Falso = function(value){
           'Content-type': 'application/json'
         },
         data: {
-          "registration_ids": idusuarios,
+          "to": usuario.registrationId,
           "notification":{
             "title": "DesafíoS",
             "body": usuario.nombre + " ha ganado el desafío",
@@ -134,6 +163,35 @@ $scope.Falso = function(value){
           "priority":"high"
         }
       }).then(function(data){console.info("data",data);}, function(error){console.info("error",error);});
+
+
+ });
+
+  var partidasReface = new Firebase("https://loginsupervisada.firebaseio.com/usuario/" + value.desafianteUID);
+  partidasReface.once('value', function(data){
+  var usuarioace = data.val();
+
+         $http ({
+
+        method: 'POST',
+        url: 'https://fcm.googleapis.com/fcm/send',
+        headers: {
+          'Authorization': 'key=AAAAq5XGRzM:APA91bGYBgkr1jYlMbtrWm5AEgVtuYg2X5r8l2Qy2o6HtVI2n_VY6_RfAMDm527xVT33N5JuOQF8dfnXGApqV92Z0kbAb3mWiIH0pugiWGrPgXyHBs0fCuICKeYlXs9iNJBorXxuAuJO',
+          'Content-type': 'application/json'
+        },
+        data: {
+          "to": usuarioace.registrationId,
+          "notification":{
+            "title": "DesafíoS",
+            "body": usuarioace.nombre + " ha perdido el desafío",
+            "sound": "default",
+            "click_action": "FCM_PLUGIN_ACTIVITY",
+            "icon": "fcm_push_icon"
+          },
+          "priority":"high"
+        }
+      }).then(function(data){console.info("data",data);}, function(error){console.info("error",error);});
+
 
 
  });
