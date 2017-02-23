@@ -1,0 +1,44 @@
+<ion-view view-title="Bienvenido a Desafios">
+    <ion-content class="col text-center" scroll="false" style="background: url(img/paisaje.jpg) no-repeat center center fixed; background-size: cover;">
+    <form>      
+      <div class="col text-center" ng-if="logueado == 'no'">
+         <button class="button button-dark" style="width: 200px" ng-click="Administrador()"><i class="ion-android-contact"></i> Administrador</button>
+         </div>
+         <ion-list  ng-if="logueado == 'no'">
+              <button class="button button-dark" style="width: 120px" ng-click="JugadorUno()"><i class="ion-android-contact"></i> Jugador 1</button>
+                 <button ion-button outline item-right icon-left class="button button-dark" style="width: 120px" ng-click="JugadorDos()"><i class="ion-android-contact"></i> Jugador 2</button>
+          </ion-list>
+          <ion-list  ng-if="logueado == 'no'">
+        <div class="list " ng-if="logueado == 'no'">
+            <br><br>
+            <input type="text" placeholder="Nombre" style="background-color: transparent; border: 1px black solid; width: 40%; margin: auto; color: black" ng-model="login.nombre" class="col text-center"><br>
+            <input type="text" placeholder="Correo" style="background-color: transparent; border: 1px black solid; width: 60%; margin: auto; color: black" ng-model="login.usuario" class="col text-center"><br>
+            <input type="password" placeholder="Contraseña" style="background-color: transparent; border: 1px black solid; width: 40%; margin: auto; color: black" ng-model="login.clave" class="col text-center">
+            
+        </div>
+        </ion-list>
+        <div class="padding" ng-if="logueado == 'no'">
+          <div class="col text-center">
+         <button class="button button-balanced" style="width: 200px" ng-click="Logear()"><i class="ion-log-in"></i> Log In</button>
+         </div>         
+         <div class="col text-center">
+         <button class="button button-balanced" style="width: 200px" ng-click="Registrar()"><i class="ion-clipboard"></i> Registrame</button>
+         </div>
+         <div class="col text-center">
+         <button class="button button-assertive" style="width: 200px" ng-click="Resetear()"><i class="ion-help"></i> Olvide mi contraseña</button>
+         </div>
+         <div class="col text-center">
+         <button class="button button-dark" style="width: 200px" ng-click="LoginGitHub()"><i class="ion-social-github-outline"></i> Login con GitHub</button>
+         </div> 
+        </div>          
+      <div class="list" ng-if="logueado == 'si' && verificado == 'si'">
+        <div class="padding">
+          <br><br><br><br><br>
+          <br><br><br><br><br>
+        <button class="button button-block button-dark" ng-if="verificado == 'si'" ng-click="VerificarMail()">Verificar Mail</button>
+          <button class="button button-dark" style="width: 200px" ng-click="Deslogear()" >¡Salir!</button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

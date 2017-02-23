@@ -1,0 +1,31 @@
+<ion-view view-title="Perfil">
+    <ion-content class="col text-center" scroll="false" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;">
+    <br>
+  <img class="redondo" src='img/{{referencia.nombre}}.png' height="150" width="150">
+    <br><br>
+    <font face="univers" size="4" color="white"> 
+         Nombre: {{referencia.nombre}}
+    </font>
+    <br><br>
+    <font face="univers" size="4" color="white"> 
+         Créditos: {{referencia.creditos}}
+    </font>
+    <br><br>
+    <font face="univers" size="4" color="white"> 
+          Email: {{referencia.correo}}
+    </font>
+    <br><br>
+    <a class="item item-positive" ng-click="LeerCodigo()" style="width: 50%; text-align: center; margin: auto;">
+    <i class="ion-ios-cart-outline"></i>
+    Cargar Crédito
+    </a>
+    <br><br>
+    
+    <a class="item item-assertive" ng-click="Deslogear()" style="width: 50%; text-align: center; margin: auto;">
+    <i class="ion-log-out"></i>
+    Salir
+    </a>
+    <br><br>
+    
+    </ion-content>
+</ion-view>

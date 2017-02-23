@@ -1,0 +1,30 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-light tabs-color-active-light tabs-background-dark">
+
+  <!-- Dashboard Tab -->
+
+<ion-tab title="Cargar Credito" icon-off="ion-social-usd-outline" icon-on="ion-social-usd" href="#/tab2/admin/cargarcredito">
+    <ion-nav-view name="tab-cargarcredito"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Listado de Desafios" icon-off="ion-android-list" icon-on="ion-android-list" href="#/tab2/admin/desafiosadmin">
+    <ion-nav-view name="tab-desafiosadmin"></ion-nav-view>
+  </ion-tab>
+
+
+  <!-- Chats Tab -->
+  <ion-tab title="Perfil" icon-off="ion-person-stalker" icon-on="ion-person-stalker" href="#/tab2/admin/perfil">
+    <ion-nav-view name="tab-perfil"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+ <ion-tab title="Información" icon-off="ion-information" icon-on="ion-information-circled" href="#/tab2/admin/account">
+    <ion-nav-view name="tab-account"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>

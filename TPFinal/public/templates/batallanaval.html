@@ -1,0 +1,47 @@
+<ion-view view-title="Batalla Naval">
+     <ion-content class="col text-center" scroll="false" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;"><br>
+     <br>
+     <font face="univers" size="4" color="white"> 
+         Elegir posición del barco: {{cuadradoElegido}} 
+    </font> 
+    <br><br>
+   <ion-list>
+    <div class="input-label" style="width: 50%; text-align: center; margin: auto;">
+    <table style="width: 50%; text-align: center; margin: auto;">
+        <tr>
+            <td ng-click="LeerCuadrado('Primero')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td>
+            <td ng-click="LeerCuadrado('Segundo')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td><tr>
+            <td ng-click="LeerCuadrado('Tercero')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td>
+            <td ng-click="LeerCuadrado('Cuarto')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td></tr>
+        </tr>
+      </table>
+     </ion-list>
+     <br>
+     <font face="univers" size="5" color="white"> 
+         Ingrese el Monto 
+    </font>
+
+   <label>
+     <span class="input-label" style="width: 100%; text-align: center; margin: auto;"></span>
+   </label>
+   <label>
+    <ion-item class="range range-balanced" style="background-color: black">
+    <i class="icon ion-cash balanced"></i>
+    <input type="range" name="credito" ng-model= "nueva.credito" min="0" max="1000" value="0">
+    <i class="icon ion-cash balanced"></i>
+  </ion-item>
+  </label>
+<br>
+     <font face="univers" size="4" color="white"> 
+         Cantidad: {{nueva.credito}} Créditos 
+    </font>
+   <br>
+         <div class="col text-center">
+         <button class="button button-balanced" style="width: 50%; text-align: center; margin: auto;" ng-click="Apostar()">Apostar <i class="ion-checkmark-round"></i></button>
+         </div>
+  </ion-content>
+</ion-view>

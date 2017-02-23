@@ -1,0 +1,52 @@
+<ion-view view-title="Listado de Desafios">
+  <ion-content class="col text-center" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;">
+  <br>
+<div class="list" ng-show="estado.bandera == 'lista'">
+     <font face="univers" size="4" color="white"> 
+         Lista de Desafíos 
+    </font>
+    <br><br>
+    <ion-item ng-if="desafio.desafiante!=referencia.nombre && desafio.aceptante == null " ng-repeat="desafio in desafios" style="text-center: left; margin: auto; background : black">
+        <td></td>
+        <font face="univers" size="2" color="white" >{{desafio.desafiante}} apuesta que {{desafio.descripcion}} 
+        </font>
+        <br>
+        <a class="button button-balanced" ng-click="AceptDesafio(desafio)">Aceptar Desafío (${{desafio.credito}})</a>
+     </ion-item>
+<br>
+  <font face="univers" size="4" color="white"> 
+         Lista de Desafíos de Batalla Naval
+    </font>
+    <br><br>
+    <ion-item ng-if="batalla.desafiante!=referencia.nombre && batalla.aceptante == null " ng-repeat="batalla in batallas" ng-click="GuardarBatalla(batalla)" style="text-center: left; margin: auto; background : black">
+        <font face="univers" size="2" color="white" >{{batalla.desafiante}} apostó {{batalla.credito}} Creditos con su nave</font>
+        <br>
+    </ion-item>
+  </div>
+
+    <ion-list ng-if="estado.bandera=='enjuego'">
+    <div> <font face="univers" size="4" color="white" >Sector del barco: {{cuadradoElegido}}</font></div>
+    <div class="input-label" style="width: 50%; text-align: center; margin: auto;">
+    <table style="width: 50%; text-align: center; margin: auto;">
+        <tr>
+            <td ng-click="LeerCuadrado('Primero')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td>
+            <td ng-click="LeerCuadrado('Segundo')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td><tr>
+            <td ng-click="LeerCuadrado('Tercero')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td>
+            <td ng-click="LeerCuadrado('Cuarto')">
+              <input type="radio" name= "elegido" class="button button-assertive"></td></tr>
+        </tr>
+      </table>
+      <br><br>
+     </ion-list>
+      <br><br>
+      <ion-list>
+      <a class="button button-balanced" ng-click="AcepteDesafio()">Aceptar</a>
+      <a class="button button-balanced" ng-click="estado.bandera='lista'">Volver</a>
+        </ion-list>
+
+
+  </ion-content>
+</ion-view>

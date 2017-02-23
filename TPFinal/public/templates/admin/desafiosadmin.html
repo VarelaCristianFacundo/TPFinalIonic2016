@@ -1,0 +1,14 @@
+<ion-view view-title="Listado de Desafios">
+     <ion-content class="col text-center" style="background: url(img/giphy.gif) no-repeat center center fixed; background-size: cover;"><br>
+<div class="list">
+     <font face="univers" size="5" color="white"> 
+         Lista de Desafíos 
+    </font><br><br> 
+    <ion-item ng-if="desafio.estado != 'finalizado' && desafio.aceptanteUID != null" ng-repeat="desafio in desafios" style="text-center: left; margin: auto; background : black">
+        <td></td>
+        <font face="univers" size="2" color="white" >{{desafio.desafiante}} apuesta {{desafio.credito}} Creditos que {{desafio.descripcion}}<br>
+        <a class="button button-balanced" ng-click="Verdadero(desafio)">V</a>
+        <a class="button button-assertive" ng-click="Falso(desafio)">F</a>
+     </ion-item>
+  </ion-content>
+</ion-view>

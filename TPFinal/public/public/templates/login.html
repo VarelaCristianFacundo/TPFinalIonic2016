@@ -1,0 +1,40 @@
+<ion-view view-title="Login">
+  <ion-content>
+    <form>
+      <div class="list" ng-if="logueado == 'no'">
+        <label class="item item-input">
+          <span class="input-label">Nombre</span>
+          <input type="text" ng-model="login.nombre">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Correo</span>
+          <input type="text" ng-model="login.usuario">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Contraseña</span>
+          <input type="password" ng-model="login.clave">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Edad</span>
+          <input type="text" ng-model="login.Edad">
+        </label>
+        <div class="padding">
+          <button class="button button-block button-positive" ng-click="Logear()" >Log In</button>
+          <button class="button button-block button-positive" ng-click="Resetear()" >Olvide mi contraseña</button>
+          <button class="button button-block button-positive" ng-click="Registrar()" >Registrame</button>
+          <button class="button button-block button-positive" ng-click="LoginGitHub()" >Login con GitHub</button>
+          <button class="button button-block button-positive" ng-click="Completar()" >Completar Datos</button>
+        </div>
+        <label class="item item-input">
+          <span class="input-label" style="color:red">{{errorMensaje}}</span>
+        </label>
+      </div>
+      <div class="list" ng-if="logueado == 'si'">
+        <div class="padding">
+        <button class="button button-block button-positive" ng-if="verificado == 'si'" ng-click="VerificarMail()">Verificar Mail</button>
+          <button class="button button-block button-positive" ng-click="Deslogear()" >Log Out</button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
