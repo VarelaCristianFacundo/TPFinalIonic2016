@@ -1,0 +1,25 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      C:\Program Files\nodejs\node.exe C:\Users\cvarela\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase deploy
+[debug] CLI Version:  3.2.1
+[debug] Platform:     win32
+[debug] Node Version: v6.4.0
+[debug] Time:         Thu Feb 23 2017 21:59:04 GMT-0300 (Hora estándar de Argentina)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/loginsupervisada 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/loginsupervisada/tokens 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'loginsupervisada'...
+[info] 
+[info] i  deploying database, hosting
+[info] +  database: rules ready to deploy.
+[info] i  hosting: preparing public directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/loginsupervisada/uploads/-KdhchF_ejHNfPJGcJb7?fileCount=257&message= 
+[debug] Error: write ECONNRESET
+    at exports._errnoException (util.js:1026:11)
+    at WriteWrap.afterWrite (net.js:794:14)
+[error] 
+[error] Error: Server Error. write ECONNRESET

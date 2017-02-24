@@ -31,6 +31,7 @@ $scope.CargarCredito = function(){
   cantidad: $scope.nueva.credito,
   estado: "disponible",
   })
+  $scope.nueva.credito="";
 };
 
 })
